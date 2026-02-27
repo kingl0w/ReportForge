@@ -1,0 +1,283 @@
+"use client";
+
+import Link from "next/link";
+import { Check, Loader2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { FadeIn } from "./fade-in";
+import { useSubscription } from "@/hooks/useSubscription";
+import { PLANS } from "@/lib/stripe/plans";
+
+const FREE_FEATURES = PLANS.FREE.features;
+const PER_REPORT_FEATURES = PLANS.PER_REPORT.features;
+const PRO_FEATURES = PLANS.PRO.features;
+
+interface PricingCardsProps {
+  authenticated?: boolean;
+}
+
+export default function PricingCards({ authenticated = false }: PricingCardsProps) {
+  return (
+    <section id="pricing" className="relative py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <FadeIn>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Simple, Transparent Pricing
+            </h2>
+            <p className="mt-4 text-lg text-slate-400">
+              Start free with 1 report. No credit card required.
+            </p>
+          </div>
+        </FadeIn>
+
+        <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-3">
+          {authenticated ? (
+            <AuthenticatedCards />
+          ) : (
+            <PublicCards />
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PublicCards() {
+  return (
+    <>
+      <FadeIn delay={0.05}>
+        <div className="flex h-full flex-col rounded-2xl border border-slate-700/50 bg-slate-800/50 p-8">
+          <div className="flex-1">
+            <h3 className="text-lg font-semibold text-white">Free</h3>
+            <p className="mt-2 text-sm text-slate-400">
+              Try it out, no strings attached
+            </p>
+            <div className="mt-6 flex items-baseline gap-1">
+              <span className="text-5xl font-bold text-white">$0</span>
+            </div>
+            <ul className="mt-8 space-y-4">
+              {FREE_FEATURES.map((feature) => (
+                <li key={feature} className="flex items-start gap-3">
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-slate-500" />
+                  <span className="text-sm text-slate-300">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="mt-10">
+            <Link
+              href="/auth/signup"
+              className="flex h-10 w-full items-center justify-center rounded-lg border border-white/20 bg-white/10 text-sm font-semibold text-white hover:border-blue-500 hover:bg-white/20"
+            >
+              Get Started
+            </Link>
+          </div>
+        </div>
+      </FadeIn>
+
+      <FadeIn delay={0.1}>
+        <div className="flex h-full flex-col rounded-2xl border border-slate-700/50 bg-slate-800/50 p-8">
+          <div className="flex-1">
+            <h3 className="text-lg font-semibold text-white">
+              Pay Per Report
+            </h3>
+            <p className="mt-2 text-sm text-slate-400">
+              Perfect for one-off reports
+            </p>
+            <div className="mt-6 flex items-baseline gap-1">
+              <span className="text-5xl font-bold text-white">$2.99</span>
+              <span className="text-lg text-slate-400">/report</span>
+            </div>
+            <ul className="mt-8 space-y-4">
+              {PER_REPORT_FEATURES.map((feature) => (
+                <li key={feature} className="flex items-start gap-3">
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-blue-500" />
+                  <span className="text-sm text-slate-300">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="mt-10">
+            <Link
+              href="/auth/signup"
+              className="flex h-10 w-full items-center justify-center rounded-lg border border-white/20 bg-white/10 text-sm font-semibold text-white hover:border-blue-500 hover:bg-white/20"
+            >
+              Get Started
+            </Link>
+          </div>
+        </div>
+      </FadeIn>
+
+      <FadeIn delay={0.2}>
+        <div className="relative flex h-full flex-col rounded-2xl border border-blue-500/50 bg-slate-800/80 p-8 shadow-lg shadow-blue-500/5 ring-1 ring-blue-500/20">
+          <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+            <span className="inline-flex items-center rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-4 py-1 text-xs font-semibold text-white">
+              Most Popular
+            </span>
+          </div>
+          <div className="flex-1">
+            <h3 className="text-lg font-semibold text-white">Pro</h3>
+            <p className="mt-2 text-sm text-slate-400">
+              For teams and power users
+            </p>
+            <div className="mt-6 flex items-baseline gap-1">
+              <span className="text-5xl font-bold text-white">$10</span>
+              <span className="text-lg text-slate-400">/month</span>
+            </div>
+            <ul className="mt-8 space-y-4">
+              {PRO_FEATURES.map((feature) => (
+                <li key={feature} className="flex items-start gap-3">
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-blue-500" />
+                  <span className="text-sm text-slate-300">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="mt-10">
+            <Link
+              href="/auth/signup"
+              className="flex h-10 w-full items-center justify-center rounded-lg bg-blue-600 text-sm font-semibold text-white hover:bg-blue-500"
+            >
+              Get Started
+            </Link>
+          </div>
+        </div>
+      </FadeIn>
+    </>
+  );
+}
+
+function AuthenticatedCards() {
+  const {
+    plan,
+    isLoading,
+    isPro,
+    upgrade,
+  } = useSubscription();
+
+  return (
+    <>
+      <FadeIn delay={0.05}>
+        <div className="flex h-full flex-col rounded-2xl border border-slate-700/50 bg-slate-800/50 p-8">
+          <div className="flex-1">
+            <h3 className="text-lg font-semibold text-white">Free</h3>
+            <p className="mt-2 text-sm text-slate-400">
+              Try it out, no strings attached
+            </p>
+            <div className="mt-6 flex items-baseline gap-1">
+              <span className="text-5xl font-bold text-white">$0</span>
+            </div>
+            <ul className="mt-8 space-y-4">
+              {FREE_FEATURES.map((feature) => (
+                <li key={feature} className="flex items-start gap-3">
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-slate-500" />
+                  <span className="text-sm text-slate-300">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="mt-10">
+            {plan === "FREE" ? (
+              <div className="flex h-10 w-full items-center justify-center rounded-lg border border-blue-500/50 text-sm font-semibold text-blue-400">
+                Current Plan
+              </div>
+            ) : (
+              <div className="flex h-10 w-full items-center justify-center rounded-lg border border-slate-700 text-sm text-slate-500">
+                Free Tier
+              </div>
+            )}
+          </div>
+        </div>
+      </FadeIn>
+
+      <FadeIn delay={0.1}>
+        <div className="flex h-full flex-col rounded-2xl border border-slate-700/50 bg-slate-800/50 p-8">
+          <div className="flex-1">
+            <h3 className="text-lg font-semibold text-white">
+              Pay Per Report
+            </h3>
+            <p className="mt-2 text-sm text-slate-400">
+              Perfect for one-off reports
+            </p>
+            <div className="mt-6 flex items-baseline gap-1">
+              <span className="text-5xl font-bold text-white">$2.99</span>
+              <span className="text-lg text-slate-400">/report</span>
+            </div>
+            <ul className="mt-8 space-y-4">
+              {PER_REPORT_FEATURES.map((feature) => (
+                <li key={feature} className="flex items-start gap-3">
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-blue-500" />
+                  <span className="text-sm text-slate-300">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="mt-10">
+            <Button
+              onClick={() => upgrade("PER_REPORT")}
+              disabled={isLoading || isPro}
+              className="h-10 w-full rounded-lg border border-white/20 bg-white/10 text-sm font-semibold text-white shadow-none hover:border-blue-500 hover:bg-white/20 hover:text-white"
+            >
+              {isLoading ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : isPro ? (
+                "Included in Pro"
+              ) : (
+                "Buy a Report"
+              )}
+            </Button>
+          </div>
+        </div>
+      </FadeIn>
+
+      <FadeIn delay={0.2}>
+        <div className="relative flex h-full flex-col rounded-2xl border border-blue-500/50 bg-slate-800/80 p-8 shadow-lg shadow-blue-500/5 ring-1 ring-blue-500/20">
+          <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+            <span className="inline-flex items-center rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-4 py-1 text-xs font-semibold text-white">
+              Most Popular
+            </span>
+          </div>
+          <div className="flex-1">
+            <h3 className="text-lg font-semibold text-white">Pro</h3>
+            <p className="mt-2 text-sm text-slate-400">
+              For teams and power users
+            </p>
+            <div className="mt-6 flex items-baseline gap-1">
+              <span className="text-5xl font-bold text-white">$10</span>
+              <span className="text-lg text-slate-400">/month</span>
+            </div>
+            <ul className="mt-8 space-y-4">
+              {PRO_FEATURES.map((feature) => (
+                <li key={feature} className="flex items-start gap-3">
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-blue-500" />
+                  <span className="text-sm text-slate-300">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="mt-10">
+            {isPro ? (
+              <div className="flex h-10 w-full items-center justify-center rounded-lg border border-blue-500/50 bg-blue-600/10 text-sm font-semibold text-blue-400">
+                Current Plan
+              </div>
+            ) : (
+              <Button
+                onClick={() => upgrade("PRO")}
+                disabled={isLoading}
+                className="h-10 w-full rounded-lg bg-blue-600 text-sm font-semibold text-white shadow-none hover:bg-blue-500 hover:text-white"
+              >
+                {isLoading ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : plan === "FREE" ? (
+                  "Get Started"
+                ) : (
+                  "Upgrade to Pro"
+                )}
+              </Button>
+            )}
+          </div>
+        </div>
+      </FadeIn>
+    </>
+  );
+}

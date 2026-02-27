@@ -1,0 +1,45 @@
+import type { ReportTemplate } from "@/types/template";
+
+export const salesReportTemplate: ReportTemplate = {
+  id: "sales-report",
+  name: "Sales Performance Report",
+  description:
+    "Revenue trends, top products, regional breakdown, and period-over-period comparison.",
+  sections: [
+    { type: "cover", title: "Sales Performance Report" },
+    { type: "table_of_contents", title: "Contents" },
+    { type: "executive_summary", title: "Executive Summary", pageBreakBefore: true },
+    { type: "key_metrics", title: "Key Performance Indicators", pageBreakBefore: true },
+    { type: "chart", title: "Revenue Trends" },
+    { type: "chart", title: "Top Products & Services" },
+    { type: "chart", title: "Regional Breakdown" },
+    { type: "rankings", title: "Performance Rankings", pageBreakBefore: true },
+    { type: "anomalies", title: "Notable Observations" },
+    { type: "correlations", title: "Data Relationships" },
+    { type: "data_table", title: "Detailed Data", pageBreakBefore: true },
+  ],
+  colorScheme: {
+    primary: "#1e3a5f",
+    secondary: "#2d6a9f",
+    accent: "#4a90d9",
+    background: "#ffffff",
+    surface: "#f8fafc",
+    text: "#1a1a2e",
+    textMuted: "#64748b",
+    border: "#e2e8f0",
+    chartColors: [
+      "#2d6a9f",
+      "#4a90d9",
+      "#7ab8e0",
+      "#1e3a5f",
+      "#3b82f6",
+      "#60a5fa",
+      "#93c5fd",
+      "#1d4ed8",
+    ],
+    positive: "#059669",
+    negative: "#dc2626",
+  },
+  preferredCharts: ["area", "bar", "donut", "stacked_bar"],
+  pageSize: "a4",
+};

@@ -1,0 +1,193 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id               String    @id @default(uuid())
+  email            String    @unique
+  name             String?
+  avatarUrl        String?
+  stripeCustomerId String?   @unique
+  plan             Plan      @default(FREE)
+  reportsUsed      Int       @default(0)
+  reportsLimit     Int       @default(3)
+  signupIp         String?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  reports      Report[]
+  templates    UserTemplate[]
+  connections  DataConnection[]
+  subscription Subscription?
+  settings     UserSettings?
+}
+
+model Report {
+  id             String         @id @default(uuid())
+  userId         String
+  title          String
+  description    String?
+  status         ReportStatus   @default(QUEUED)
+  templateId     String?
+  format         ReportFormat   @default(PDF)
+  fileUrl        String?
+  docxUrl        String?
+  fileSize       Int?
+  pageCount      Int?
+  dataSourceType DataSourceType
+  rawDataUrl     String?
+  metadata       Json?
+  errorMessage   String?
+  generatedAt    DateTime?
+  isPublic       Boolean        @default(false)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+}
+
+model UserTemplate {
+  id          String   @id @default(uuid())
+  userId      String
+  name        String
+  description String?
+  config      Json
+  previewUrl  String?
+  isPublic    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model DataConnection {
+  id          String             @id @default(uuid())
+  userId      String
+  provider    ConnectionProvider
+  credentials Json
+  config      Json?
+  shopDomain  String?
+  lastSyncAt  DateTime?
+  isActive    Boolean            @default(true)
+  createdAt   DateTime           @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Subscription {
+  id                   String    @id @default(uuid())
+  userId               String    @unique
+  stripeSubscriptionId String    @unique
+  stripePriceId        String
+  status               SubStatus
+  currentPeriodStart   DateTime
+  currentPeriodEnd     DateTime
+  cancelAtPeriodEnd    Boolean   @default(false)
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+enum Plan {
+  FREE
+  PRO
+  PAY_PER_REPORT
+}
+
+enum ReportStatus {
+  QUEUED
+  PROCESSING
+  ANALYZING
+  GENERATING
+  COMPLETE
+  FAILED
+}
+
+enum ReportFormat {
+  PDF
+  DOCX
+  BOTH
+}
+
+enum DataSourceType {
+  CSV
+  EXCEL
+  JSON
+  SHOPIFY
+  EBAY
+  GOOGLE_ANALYTICS
+  CUSTOM_API
+}
+
+enum ConnectionProvider {
+  SHOPIFY
+  EBAY
+  GOOGLE_ANALYTICS
+  STRIPE_DATA
+  CUSTOM
+}
+
+model UserSettings {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Email preferences
+  emailOnReportComplete Boolean @default(true)
+  emailWeeklyDigest     Boolean @default(false)
+  emailMarketingUpdates Boolean @default(false)
+
+  // White-label branding (Pro only)
+  logoUrl                   String?
+  brandPrimary              String?
+  brandSecondary            String?
+  brandAccent               String?
+  customFooterText          String?
+  removeReportForgeBranding Boolean @default(false)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum SubStatus {
+  ACTIVE
+  PAST_DUE
+  CANCELED
+  INCOMPLETE
+  PAUSED
+}
+
+model StripeEvent {
+  id            String    @id @default(uuid())
+  stripeEventId String    @unique
+  type          String
+  data          Json
+  processedAt   DateTime?
+  createdAt     DateTime  @default(now())
+}
+
+model ActivityLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String
+  metadata  Json?
+  ip        String?
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@index([action, createdAt])
+  @@index([ip, createdAt])
+}

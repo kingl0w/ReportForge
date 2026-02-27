@@ -1,0 +1,45 @@
+import type { ReportTemplate } from "@/types/template";
+
+export const shopifySalesTemplate: ReportTemplate = {
+  id: "shopify-sales",
+  name: "Shopify Sales Overview",
+  description:
+    "Revenue trends, top products, order status breakdown, and performance rankings for your Shopify store.",
+  sections: [
+    { type: "cover", title: "Shopify Sales Overview" },
+    { type: "table_of_contents", title: "Contents" },
+    { type: "executive_summary", title: "Executive Summary", pageBreakBefore: true },
+    { type: "key_metrics", title: "Key Metrics", pageBreakBefore: true },
+    { type: "chart", title: "Revenue by Day" },
+    { type: "chart", title: "Top Products" },
+    { type: "chart", title: "Order Status Breakdown" },
+    { type: "chart", title: "Revenue by Fulfillment" },
+    { type: "rankings", title: "Performance Rankings", pageBreakBefore: true },
+    { type: "anomalies", title: "Notable Observations" },
+    { type: "data_table", title: "Order Details", pageBreakBefore: true },
+  ],
+  colorScheme: {
+    primary: "#96bf48",
+    secondary: "#5a8a1a",
+    accent: "#479433",
+    background: "#ffffff",
+    surface: "#f8faf5",
+    text: "#1a1a2e",
+    textMuted: "#64748b",
+    border: "#e2e8f0",
+    chartColors: [
+      "#96bf48",
+      "#5a8a1a",
+      "#479433",
+      "#7ab648",
+      "#3d7a2a",
+      "#b8d980",
+      "#2d6a1a",
+      "#d4e8a8",
+    ],
+    positive: "#059669",
+    negative: "#dc2626",
+  },
+  preferredCharts: ["area", "bar", "donut", "stacked_bar"],
+  pageSize: "a4",
+};

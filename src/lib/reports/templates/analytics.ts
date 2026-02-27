@@ -1,0 +1,45 @@
+import type { ReportTemplate } from "@/types/template";
+
+export const analyticsTemplate: ReportTemplate = {
+  id: "analytics",
+  name: "Website Analytics",
+  description:
+    "Traffic sources, page performance, conversion funnel, and geographic distribution.",
+  sections: [
+    { type: "cover", title: "Website Analytics Report" },
+    { type: "table_of_contents", title: "Contents" },
+    { type: "executive_summary", title: "Executive Summary", pageBreakBefore: true },
+    { type: "key_metrics", title: "Traffic Overview", pageBreakBefore: true },
+    { type: "chart", title: "Traffic Trends" },
+    { type: "chart", title: "Source Breakdown" },
+    { type: "chart", title: "Page Performance" },
+    { type: "rankings", title: "Top Pages", pageBreakBefore: true },
+    { type: "anomalies", title: "Notable Observations" },
+    { type: "correlations", title: "Metric Relationships" },
+    { type: "data_table", title: "Detailed Data", pageBreakBefore: true },
+  ],
+  colorScheme: {
+    primary: "#0891b2",
+    secondary: "#06b6d4",
+    accent: "#22d3ee",
+    background: "#ffffff",
+    surface: "#ecfeff",
+    text: "#1a1a2e",
+    textMuted: "#64748b",
+    border: "#a5f3fc",
+    chartColors: [
+      "#0891b2",
+      "#06b6d4",
+      "#22d3ee",
+      "#0e7490",
+      "#155e75",
+      "#67e8f9",
+      "#164e63",
+      "#083344",
+    ],
+    positive: "#059669",
+    negative: "#dc2626",
+  },
+  preferredCharts: ["multi_line", "area", "donut", "horizontal_bar"],
+  pageSize: "a4",
+};
