@@ -11,9 +11,9 @@ function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navLinks = [
-    { href: "#features", label: "Features" },
-    { href: "#templates", label: "Templates" },
-    { href: "#pricing", label: "Pricing" },
+    { href: "/#features", label: "Features" },
+    { href: "/#templates", label: "Templates" },
+    { href: "/#pricing", label: "Pricing" },
   ];
 
   return (
@@ -99,8 +99,8 @@ function Footer() {
   return (
     <footer className="border-t border-border bg-muted/50">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 md:grid-cols-4">
-          <div className="md:col-span-1">
+        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+          <div className="max-w-xs">
             <Link href="/">
               <Logo />
             </Link>
@@ -109,46 +109,31 @@ function Footer() {
             </p>
           </div>
 
-          <div>
-            <h3 className="text-sm font-semibold text-foreground">Product</h3>
-            <ul className="mt-3 space-y-2">
-              <li><a href="#features" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Features</a></li>
-              <li><a href="#templates" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Templates</a></li>
-              <li><a href="#pricing" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Pricing</a></li>
-              <li><Link href="/auth/signup" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Start Free</Link></li>
-            </ul>
-          </div>
+          <div className="flex gap-12">
+            <div>
+              <h3 className="text-sm font-semibold text-foreground">Product</h3>
+              <ul className="mt-3 space-y-2">
+                <li><a href="/#features" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Features</a></li>
+                <li><a href="/#templates" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Templates</a></li>
+                <li><a href="/#pricing" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Pricing</a></li>
+                <li><Link href="/auth/signup" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Start Free</Link></li>
+              </ul>
+            </div>
 
-          <div>
-            <h3 className="text-sm font-semibold text-foreground">Resources</h3>
-            <ul className="mt-3 space-y-2">
-              <li><span className="text-sm text-muted-foreground">Documentation</span></li>
-              <li><span className="text-sm text-muted-foreground">API Reference</span></li>
-              <li><span className="text-sm text-muted-foreground">Changelog</span></li>
-              <li><span className="text-sm text-muted-foreground">Status</span></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold text-foreground">Company</h3>
-            <ul className="mt-3 space-y-2">
-              <li><span className="text-sm text-muted-foreground">About</span></li>
-              <li><span className="text-sm text-muted-foreground">Blog</span></li>
-              <li><span className="text-sm text-muted-foreground">Privacy</span></li>
-              <li><span className="text-sm text-muted-foreground">Terms</span></li>
-            </ul>
+            <div>
+              <h3 className="text-sm font-semibold text-foreground">Legal</h3>
+              <ul className="mt-3 space-y-2">
+                <li><Link href="/privacy" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Privacy</Link></li>
+                <li><Link href="/terms" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Terms</Link></li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
+        <div className="mt-12 border-t border-border pt-8">
           <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} ReportForge. All rights reserved.
           </p>
-          <div className="flex gap-6">
-            <span className="text-sm text-muted-foreground">Twitter</span>
-            <span className="text-sm text-muted-foreground">GitHub</span>
-            <span className="text-sm text-muted-foreground">Discord</span>
-          </div>
         </div>
       </div>
     </footer>

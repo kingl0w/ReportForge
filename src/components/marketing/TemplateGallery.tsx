@@ -240,7 +240,7 @@ export default function TemplateGallery() {
       <div className="mx-auto max-w-6xl">
         <FadeIn>
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
               Templates for Every Report
             </h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">

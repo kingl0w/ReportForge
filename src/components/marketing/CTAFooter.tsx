@@ -10,7 +10,7 @@ export default function CTAFooter() {
     <section className="relative overflow-hidden py-24 sm:py-32">
       <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         <FadeIn>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             Ready to stop making reports by hand?
           </h2>
         </FadeIn>

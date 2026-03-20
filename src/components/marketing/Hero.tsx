@@ -117,10 +117,10 @@ function ReportMockup() {
 export default function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-32 sm:px-6 lg:px-8">
+      <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center px-4 pt-32 pb-16 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h1 className="mx-auto max-w-4xl text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
-            Turn Raw Data Into Stunning Reports in Seconds
+          <h1 className="mx-auto max-w-4xl text-5xl font-semibold leading-tight tracking-tight text-foreground sm:text-6xl">
+            Your Data Deserves a Better Presentation
           </h1>
         </div>
 

@@ -36,11 +36,11 @@ const steps: Step[] = [
 
 export default function HowItWorks() {
   return (
-    <section className="bg-muted/50 py-24 sm:py-32 px-4 sm:px-6 lg:px-8">
+    <section className="bg-muted/50 pt-16 pb-24 sm:pt-20 sm:pb-32 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <FadeIn>
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
               How It Works
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
@@ -49,18 +49,11 @@ export default function HowItWorks() {
           </div>
         </FadeIn>
 
-        <div className="relative grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-0">
+        <div className="relative grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-10">
           {steps.map((step, index) => (
             <FadeIn key={step.number} delay={index * 0.1}>
               <div className="relative flex flex-col items-center text-center">
-                {index < steps.length - 1 && (
-                  <div
-                    className="absolute top-16 left-[calc(50%+60px)] hidden h-0 w-[calc(100%-120px)] border-t-2 border-dashed border-border md:block"
-                    aria-hidden="true"
-                  />
-                )}
-
-                <div className="w-full rounded-xl border border-border bg-card p-8">
+                <div className="w-full cursor-pointer rounded-xl border border-border bg-card p-8 transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
                   <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                     Step {step.number}
                   </span>

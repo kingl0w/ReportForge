@@ -243,7 +243,7 @@ function FeatureBlock({ feature }: { feature: Feature }) {
         >
           <div className="max-w-lg">
             <Badge label={feature.badge} />
-            <h3 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h3 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
               {feature.title}
             </h3>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
@@ -273,7 +273,7 @@ export default function FeatureShowcase() {
             <p className="text-sm font-semibold uppercase tracking-widest text-primary">
               Everything you need
             </p>
-            <h2 className="mt-3 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+            <h2 className="mt-3 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
               Powerful features, zero complexity
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">

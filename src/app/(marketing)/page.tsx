@@ -4,7 +4,6 @@ import HowItWorks from "@/components/marketing/HowItWorks";
 import TemplateGallery from "@/components/marketing/TemplateGallery";
 import FeatureShowcase from "@/components/marketing/FeatureShowcase";
 import PricingCards from "@/components/marketing/PricingCards";
-import Testimonials from "@/components/marketing/Testimonials";
 import CTAFooter from "@/components/marketing/CTAFooter";
 
 export const metadata: Metadata = {
@@ -58,7 +57,6 @@ export default function LandingPage() {
       <TemplateGallery />
       <FeatureShowcase />
       <PricingCards />
-      <Testimonials />
       <CTAFooter />
     </>
   );
