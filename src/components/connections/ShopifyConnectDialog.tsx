@@ -97,7 +97,7 @@ export default function ShopifyConnectDialog({
 
         <DialogFooter>
           <Button
-            className="bg-white/10 border border-white/20 text-white hover:bg-white/20"
+            className="bg-secondary border border-border text-foreground hover:bg-accent"
             onClick={() => handleOpenChange(false)}
             disabled={loading}
           >
@@ -106,7 +106,7 @@ export default function ShopifyConnectDialog({
           <Button
             onClick={handleConnect}
             disabled={!isValid || loading}
-            className="bg-[#96bf48] text-white font-medium hover:bg-[#7ea63e]"
+            className="bg-[#96bf48] text-white font-medium hover:bg-[#96bf48]/90"
           >
             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             Connect Store

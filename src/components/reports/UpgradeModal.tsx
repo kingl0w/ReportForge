@@ -52,7 +52,7 @@ export default function UpgradeModal({
               </div>
               <Button
                 size="sm"
-                className="bg-white/10 border border-white/20 text-white hover:bg-white/20"
+                className="bg-secondary border border-border text-foreground hover:bg-accent"
                 onClick={() => upgrade("PER_REPORT")}
                 disabled={isLoading}
               >
@@ -66,7 +66,7 @@ export default function UpgradeModal({
             <ul className="mt-3 space-y-1.5">
               {PLANS.PER_REPORT.features.slice(0, 3).map((f) => (
                 <li key={f} className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <Check className="h-3 w-3 shrink-0 text-blue-500" />
+                  <Check className="h-3 w-3 shrink-0 text-primary" />
                   {f}
                 </li>
               ))}
@@ -84,11 +84,11 @@ export default function UpgradeModal({
             </div>
           </div>
 
-          <div className="rounded-lg border border-blue-500/40 bg-blue-500/5 p-4">
+          <div className="rounded-lg border border-primary/40 bg-primary/5 p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="flex items-center gap-1.5 text-sm font-semibold text-foreground">
-                  <Sparkles className="h-3.5 w-3.5 text-blue-500" />
+                  <Sparkles className="h-3.5 w-3.5 text-primary" />
                   Upgrade to Pro
                 </p>
                 <p className="text-xs text-muted-foreground">
@@ -97,7 +97,7 @@ export default function UpgradeModal({
               </div>
               <Button
                 size="sm"
-                className="bg-blue-600 text-white font-medium hover:bg-blue-500"
+                className="bg-primary text-foreground font-medium hover:bg-primary/90"
                 onClick={() => upgrade("PRO")}
                 disabled={isLoading}
               >
@@ -111,7 +111,7 @@ export default function UpgradeModal({
             <ul className="mt-3 space-y-1.5">
               {PLANS.PRO.features.slice(0, 4).map((f) => (
                 <li key={f} className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <Check className="h-3 w-3 shrink-0 text-blue-500" />
+                  <Check className="h-3 w-3 shrink-0 text-primary" />
                   {f}
                 </li>
               ))}

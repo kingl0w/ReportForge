@@ -267,7 +267,7 @@ export default function TemplateCanvas({
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-7 w-7 text-muted-foreground hover:text-foreground hover:bg-white/10"
+                  className="h-7 w-7 text-muted-foreground hover:text-foreground hover:bg-accent"
                   disabled={!builder.canUndo}
                   onClick={builder.undo}
                 >
@@ -281,7 +281,7 @@ export default function TemplateCanvas({
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-7 w-7 text-muted-foreground hover:text-foreground hover:bg-white/10"
+                  className="h-7 w-7 text-muted-foreground hover:text-foreground hover:bg-accent"
                   disabled={!builder.canRedo}
                   onClick={builder.redo}
                 >
@@ -311,7 +311,7 @@ export default function TemplateCanvas({
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-7 w-7 text-muted-foreground hover:text-foreground hover:bg-white/10"
+                  className="h-7 w-7 text-muted-foreground hover:text-foreground hover:bg-accent"
                   onClick={() => setLeftCollapsed(!leftCollapsed)}
                 >
                   {leftCollapsed ? (
@@ -330,7 +330,7 @@ export default function TemplateCanvas({
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-7 w-7 text-muted-foreground hover:text-foreground hover:bg-white/10"
+                  className="h-7 w-7 text-muted-foreground hover:text-foreground hover:bg-accent"
                   onClick={() => setRightCollapsed(!rightCollapsed)}
                 >
                   {rightCollapsed ? (
@@ -351,7 +351,7 @@ export default function TemplateCanvas({
           <Button
             onClick={handleSave}
             disabled={builder.saving || !builder.name.trim()}
-            className="h-8 gap-1.5 bg-blue-600 text-white font-medium hover:bg-blue-500 text-xs"
+            className="h-8 gap-1.5 bg-primary text-primary-foreground font-medium hover:bg-primary/90 text-xs"
           >
             {builder.saving ? (
               <Loader2 className="h-3.5 w-3.5 animate-spin" />
@@ -378,7 +378,7 @@ export default function TemplateCanvas({
               className={cn(
                 "flex flex-1 items-center justify-center gap-1.5 py-2.5 text-xs font-medium transition-colors",
                 mobileTab === tab.key
-                  ? "border-b-2 border-blue-500 text-blue-400"
+                  ? "border-b-2 border-primary text-primary"
                   : "text-muted-foreground hover:text-foreground"
               )}
               onClick={() => setMobileTab(tab.key)}

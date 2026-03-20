@@ -96,7 +96,7 @@ export default function ConnectionCard({
           <div className="flex flex-wrap gap-2">
             <Button
               size="sm"
-              className="bg-white/10 border border-white/20 text-white hover:bg-white/20"
+              className="bg-secondary border border-border text-foreground hover:bg-accent"
               onClick={() => onSync(id)}
               disabled={syncing}
             >
@@ -109,7 +109,7 @@ export default function ConnectionCard({
             </Button>
             <Button
               size="sm"
-              className="bg-white/10 border border-white/20 text-white hover:bg-white/20"
+              className="bg-secondary border border-border text-foreground hover:bg-accent"
               onClick={() =>
                 router.push(`/dashboard/reports/new?connectionId=${id}`)
               }
@@ -140,7 +140,7 @@ export default function ConnectionCard({
           </DialogHeader>
           <DialogFooter>
             <Button
-              className="bg-white/10 border border-white/20 text-white hover:bg-white/20"
+              className="bg-secondary border border-border text-foreground hover:bg-accent"
               onClick={() => setConfirmDisconnect(false)}
               disabled={disconnecting}
             >

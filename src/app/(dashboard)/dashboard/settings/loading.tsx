@@ -14,7 +14,7 @@ export default function SettingsLoading() {
         <Skeleton className="mt-2 h-4 w-56" />
       </div>
 
-      <Card className="bg-card">
+      <Card>
         <CardHeader>
           <div className="flex items-center gap-2">
             <Skeleton className="h-5 w-5" />
@@ -47,7 +47,7 @@ export default function SettingsLoading() {
         </CardFooter>
       </Card>
 
-      <Card className="bg-card">
+      <Card>
         <CardHeader>
           <div className="flex items-center gap-2">
             <Skeleton className="h-5 w-5" />
@@ -64,7 +64,7 @@ export default function SettingsLoading() {
         </CardContent>
       </Card>
 
-      <Card className="bg-card">
+      <Card>
         <CardHeader>
           <div className="flex items-center gap-2">
             <Skeleton className="h-5 w-5" />

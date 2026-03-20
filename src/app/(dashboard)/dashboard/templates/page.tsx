@@ -96,7 +96,7 @@ export default function UserTemplatesPage() {
             Create and manage custom report templates.
           </p>
         </div>
-        <Button className="bg-blue-600 text-white font-medium hover:bg-blue-500" asChild>
+        <Button className="bg-primary text-foreground font-medium hover:bg-primary/90" asChild>
           <Link href="/dashboard/templates/builder">
             <Plus className="mr-2 h-4 w-4" />
             New Template
@@ -131,7 +131,7 @@ export default function UserTemplatesPage() {
             Create your first custom template to get started.
           </p>
           <div className="mt-6">
-            <Button className="bg-blue-600 text-white font-medium hover:bg-blue-500" asChild>
+            <Button className="bg-primary text-foreground font-medium hover:bg-primary/90" asChild>
               <Link href="/dashboard/templates/builder">
                 <Plus className="mr-2 h-4 w-4" />
                 Create Template
@@ -166,7 +166,7 @@ export default function UserTemplatesPage() {
                     </div>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="icon" className="h-7 w-7 text-white/70 hover:text-white hover:bg-white/10 dark:hover:bg-white/10">
+                        <Button variant="ghost" size="icon" className="h-7 w-7 text-muted-foreground hover:text-foreground hover:bg-accent">
                           <MoreHorizontal className="h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>
@@ -194,7 +194,7 @@ export default function UserTemplatesPage() {
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] text-muted-foreground">
+                    <span className="text-xs text-muted-foreground">
                       {sectionCount} sections
                     </span>
                   </div>
@@ -213,7 +213,7 @@ export default function UserTemplatesPage() {
 
                   <Button
                     size="sm"
-                    className="w-full bg-white/10 border border-white/20 text-white hover:bg-white/20"
+                    className="w-full bg-secondary border border-border text-foreground hover:bg-accent"
                     onClick={() =>
                       router.push(
                         `/dashboard/templates/builder/${template.id}`
@@ -246,7 +246,7 @@ export default function UserTemplatesPage() {
           </DialogHeader>
           <DialogFooter>
             <Button
-              className="bg-white/10 border border-white/20 text-white hover:bg-white/20"
+              className="bg-secondary border border-border text-foreground hover:bg-accent"
               onClick={() => setDeleteTarget(null)}
               disabled={deleting}
             >

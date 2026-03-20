@@ -16,7 +16,7 @@ export default function UpgradePage() {
       <div className="flex items-center gap-3">
         <Link
           href="/dashboard"
-          className="inline-flex items-center gap-1 rounded-md px-2 py-1.5 text-sm text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+          className="inline-flex items-center gap-1 rounded-md px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
         >
           <ArrowLeft className="h-4 w-4" />
         </Link>
@@ -38,7 +38,7 @@ export default function UpgradePage() {
           features={PLANS.FREE.features}
           isCurrent={plan === "FREE"}
           highlight={false}
-          checkColor="text-zinc-500"
+          checkColor="text-muted-foreground"
         />
 
         <PlanCard
@@ -48,17 +48,17 @@ export default function UpgradePage() {
           features={PLANS.PER_REPORT.features}
           isCurrent={plan === "PAY_PER_REPORT"}
           highlight={false}
-          checkColor="text-blue-500"
+          checkColor="text-primary"
           action={
             isPro ? (
-              <div className="flex h-10 w-full items-center justify-center rounded-lg border border-zinc-700 text-sm text-zinc-500">
+              <div className="flex h-10 w-full items-center justify-center rounded-lg border border-border text-sm text-muted-foreground">
                 Included in Pro
               </div>
             ) : plan === "PAY_PER_REPORT" ? (
               <Button
                 onClick={() => upgrade("PER_REPORT")}
                 disabled={isLoading}
-                className="h-10 w-full rounded-lg border border-white/20 bg-white/10 text-sm font-semibold text-white shadow-none hover:border-blue-500 hover:bg-white/20 hover:text-white"
+                className="h-10 w-full rounded-lg border border-border bg-secondary text-sm font-semibold text-foreground shadow-none hover:border-primary hover:bg-accent hover:text-foreground"
               >
                 {isLoading ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
@@ -70,7 +70,7 @@ export default function UpgradePage() {
               <Button
                 onClick={() => upgrade("PER_REPORT")}
                 disabled={isLoading}
-                className="h-10 w-full rounded-lg border border-white/20 bg-white/10 text-sm font-semibold text-white shadow-none hover:border-blue-500 hover:bg-white/20 hover:text-white"
+                className="h-10 w-full rounded-lg border border-border bg-secondary text-sm font-semibold text-foreground shadow-none hover:border-primary hover:bg-accent hover:text-foreground"
               >
                 {isLoading ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
@@ -89,14 +89,14 @@ export default function UpgradePage() {
           features={PLANS.PRO.features}
           isCurrent={isPro}
           highlight
-          checkColor="text-blue-500"
+          checkColor="text-primary"
           badge="Most Popular"
           action={
             isPro ? (
               <Button
                 onClick={openPortal}
                 disabled={isLoading}
-                className="h-10 w-full rounded-lg bg-blue-600 text-sm font-semibold text-white shadow-none hover:bg-blue-500 hover:text-white"
+                className="h-10 w-full rounded-lg bg-primary text-sm font-semibold text-primary-foreground shadow-none hover:bg-primary/90 hover:text-primary-foreground"
               >
                 {isLoading ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
@@ -111,7 +111,7 @@ export default function UpgradePage() {
               <Button
                 onClick={() => upgrade("PRO")}
                 disabled={isLoading}
-                className="h-10 w-full rounded-lg bg-blue-600 text-sm font-semibold text-white shadow-none hover:bg-blue-500 hover:text-white"
+                className="h-10 w-full rounded-lg bg-primary text-sm font-semibold text-primary-foreground shadow-none hover:bg-primary/90 hover:text-primary-foreground"
               >
                 {isLoading ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
@@ -152,13 +152,13 @@ function PlanCard({
     <div
       className={`relative flex flex-col rounded-2xl border p-6 ${
         highlight
-          ? "border-blue-500/50 bg-card shadow-lg shadow-blue-500/5 ring-1 ring-blue-500/20"
+          ? "border-primary/50 bg-card shadow-lg shadow-primary/5 ring-1 ring-primary/20"
           : "border-border bg-card"
       }`}
     >
       {badge && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-          <span className="inline-flex items-center rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-4 py-1 text-xs font-semibold text-white">
+          <span className="inline-flex items-center rounded-full bg-primary px-4 py-1 text-xs font-semibold text-primary-foreground">
             {badge}
           </span>
         </div>
@@ -166,7 +166,7 @@ function PlanCard({
 
       {isCurrent && (
         <div className="absolute -top-3 right-4">
-          <span className="inline-flex items-center rounded-full border border-blue-500/50 bg-blue-600/10 px-3 py-0.5 text-xs font-medium text-blue-400">
+          <span className="inline-flex items-center rounded-full border border-primary/50 bg-primary/10 px-3 py-0.5 text-xs font-medium text-primary">
             Current Plan
           </span>
         </div>
@@ -195,7 +195,7 @@ function PlanCard({
 
       <div className="mt-8">
         {action ?? (
-          <div className="flex h-10 w-full items-center justify-center rounded-lg border border-zinc-700 text-sm text-zinc-500">
+          <div className="flex h-10 w-full items-center justify-center rounded-lg border border-border text-sm text-muted-foreground">
             {isCurrent ? "Current Plan" : "Free Tier"}
           </div>
         )}

@@ -121,8 +121,8 @@ export default function ColorSchemeEditor({
               className={cn(
                 "flex w-full items-center gap-3 rounded-md px-2.5 py-2 text-left transition-colors",
                 active
-                  ? "bg-blue-500/15 ring-1 ring-blue-500/50"
-                  : "hover:bg-white/5"
+                  ? "bg-primary/15 ring-1 ring-primary/50"
+                  : "hover:bg-accent"
               )}
               onClick={() =>
                 onUpdate({
@@ -146,7 +146,7 @@ export default function ColorSchemeEditor({
                 {preset.name}
               </span>
               {active && (
-                <Check className="h-3.5 w-3.5 shrink-0 text-blue-400" />
+                <Check className="h-3.5 w-3.5 shrink-0 text-primary" />
               )}
             </button>
           );

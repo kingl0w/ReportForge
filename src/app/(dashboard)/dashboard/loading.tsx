@@ -25,7 +25,7 @@ export default function DashboardLoading() {
         ))}
       </div>
 
-      <Card className="bg-card">
+      <Card>
         <CardHeader className="flex flex-row items-center justify-between">
           <Skeleton className="h-6 w-32" />
           <Skeleton className="h-8 w-20" />

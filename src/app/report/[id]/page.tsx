@@ -57,12 +57,12 @@ export default async function ReportPage({ params }: ReportPageProps) {
 
   if (report.status !== "COMPLETE") {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#0a0a0f]">
+      <div className="flex min-h-screen items-center justify-center bg-background">
         <div className="text-center">
-          <h1 className="text-xl font-semibold text-white">
+          <h1 className="text-xl font-semibold text-foreground">
             Report Not Ready
           </h1>
-          <p className="mt-2 text-sm text-zinc-400">
+          <p className="mt-2 text-sm text-muted-foreground">
             This report is still being generated. Check back shortly.
           </p>
         </div>
@@ -86,10 +86,10 @@ export default async function ReportPage({ params }: ReportPageProps) {
 
   if (!analysis) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#0a0a0f]">
+      <div className="flex min-h-screen items-center justify-center bg-background">
         <div className="text-center">
-          <h1 className="text-xl font-semibold text-white">{report.title}</h1>
-          <p className="mt-2 text-sm text-zinc-400">
+          <h1 className="text-xl font-semibold text-foreground">{report.title}</h1>
+          <p className="mt-2 text-sm text-muted-foreground">
             Interactive view is not available for this report.
           </p>
           {report.fileUrl && (
@@ -97,7 +97,7 @@ export default async function ReportPage({ params }: ReportPageProps) {
               href={report.fileUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-500"
+              className="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
             >
               Download PDF
             </a>

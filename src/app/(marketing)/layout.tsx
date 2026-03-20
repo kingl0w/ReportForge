@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { FileText, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import Logo from "@/components/shared/Logo";
 
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -15,13 +17,10 @@ function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 z-50 w-full border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-xl">
+    <nav className="fixed top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600">
-            <FileText className="h-4 w-4 text-white" />
-          </div>
-          <span className="text-lg font-bold text-white">ReportForge</span>
+        <Link href="/">
+          <Logo />
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -29,7 +28,7 @@ function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-slate-400 transition-colors hover:text-white"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
             </a>
@@ -39,22 +38,19 @@ function Navbar() {
         <div className="hidden items-center gap-3 md:flex">
           <Link
             href="/auth/login"
-            className="text-sm font-medium text-slate-400 transition-colors hover:text-white"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             Log in
           </Link>
-          <Link
-            href="/auth/signup"
-            className="inline-flex h-9 items-center justify-center rounded-lg bg-blue-600 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-500"
-          >
-            Get Started
-          </Link>
+          <Button size="sm" asChild>
+            <Link href="/auth/signup">Start Free</Link>
+          </Button>
         </div>
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-slate-400 hover:text-white md:hidden"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground md:hidden"
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -67,7 +63,7 @@ function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden border-t border-slate-800 md:hidden"
+            className="overflow-hidden border-t border-border md:hidden"
           >
             <div className="space-y-1 px-4 py-4">
               {navLinks.map((link) => (
@@ -75,24 +71,21 @@ function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block rounded-lg px-3 py-2 text-sm font-medium text-slate-400 transition-colors hover:bg-slate-800 hover:text-white"
+                  className="block rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
                 >
                   {link.label}
                 </a>
               ))}
-              <div className="mt-4 flex flex-col gap-2 border-t border-slate-800 pt-4">
+              <div className="mt-4 flex flex-col gap-2 border-t border-border pt-4">
                 <Link
                   href="/auth/login"
-                  className="rounded-lg px-3 py-2 text-center text-sm font-medium text-slate-400 transition-colors hover:bg-slate-800 hover:text-white"
+                  className="rounded-lg px-3 py-2 text-center text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
                 >
                   Log in
                 </Link>
-                <Link
-                  href="/auth/signup"
-                  className="rounded-lg bg-blue-600 px-3 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-blue-500"
-                >
-                  Get Started
-                </Link>
+                <Button asChild>
+                  <Link href="/auth/signup">Start Free</Link>
+                </Button>
               </div>
             </div>
           </motion.div>
@@ -104,60 +97,57 @@ function Navbar() {
 
 function Footer() {
   return (
-    <footer className="border-t border-slate-800 bg-slate-950">
+    <footer className="border-t border-border bg-muted/50">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-4">
           <div className="md:col-span-1">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600">
-                <FileText className="h-4 w-4 text-white" />
-              </div>
-              <span className="text-lg font-bold text-white">ReportForge</span>
+            <Link href="/">
+              <Logo />
             </Link>
-            <p className="mt-3 text-sm text-slate-500">
+            <p className="mt-3 text-sm text-muted-foreground">
               Transform raw data into polished, professional reports in seconds.
             </p>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-white">Product</h3>
+            <h3 className="text-sm font-semibold text-foreground">Product</h3>
             <ul className="mt-3 space-y-2">
-              <li><a href="#features" className="text-sm text-slate-500 transition-colors hover:text-slate-300">Features</a></li>
-              <li><a href="#templates" className="text-sm text-slate-500 transition-colors hover:text-slate-300">Templates</a></li>
-              <li><a href="#pricing" className="text-sm text-slate-500 transition-colors hover:text-slate-300">Pricing</a></li>
-              <li><Link href="/auth/signup" className="text-sm text-slate-500 transition-colors hover:text-slate-300">Get Started</Link></li>
+              <li><a href="#features" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Features</a></li>
+              <li><a href="#templates" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Templates</a></li>
+              <li><a href="#pricing" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Pricing</a></li>
+              <li><Link href="/auth/signup" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Start Free</Link></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-white">Resources</h3>
+            <h3 className="text-sm font-semibold text-foreground">Resources</h3>
             <ul className="mt-3 space-y-2">
-              <li><span className="text-sm text-slate-500">Documentation</span></li>
-              <li><span className="text-sm text-slate-500">API Reference</span></li>
-              <li><span className="text-sm text-slate-500">Changelog</span></li>
-              <li><span className="text-sm text-slate-500">Status</span></li>
+              <li><span className="text-sm text-muted-foreground">Documentation</span></li>
+              <li><span className="text-sm text-muted-foreground">API Reference</span></li>
+              <li><span className="text-sm text-muted-foreground">Changelog</span></li>
+              <li><span className="text-sm text-muted-foreground">Status</span></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-white">Company</h3>
+            <h3 className="text-sm font-semibold text-foreground">Company</h3>
             <ul className="mt-3 space-y-2">
-              <li><span className="text-sm text-slate-500">About</span></li>
-              <li><span className="text-sm text-slate-500">Blog</span></li>
-              <li><span className="text-sm text-slate-500">Privacy</span></li>
-              <li><span className="text-sm text-slate-500">Terms</span></li>
+              <li><span className="text-sm text-muted-foreground">About</span></li>
+              <li><span className="text-sm text-muted-foreground">Blog</span></li>
+              <li><span className="text-sm text-muted-foreground">Privacy</span></li>
+              <li><span className="text-sm text-muted-foreground">Terms</span></li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-800 pt-8 md:flex-row">
-          <p className="text-sm text-slate-600">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
+          <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} ReportForge. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <span className="text-sm text-slate-600">Twitter</span>
-            <span className="text-sm text-slate-600">GitHub</span>
-            <span className="text-sm text-slate-600">Discord</span>
+            <span className="text-sm text-muted-foreground">Twitter</span>
+            <span className="text-sm text-muted-foreground">GitHub</span>
+            <span className="text-sm text-muted-foreground">Discord</span>
           </div>
         </div>
       </div>
@@ -171,7 +161,7 @@ export default function MarketingLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main>{children}</main>
       <Footer />

@@ -181,13 +181,13 @@ export default function InteractiveDashboard({
   }, [generatedAt]);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-white">
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0a0a0f]/80 backdrop-blur-xl">
+    <div className="min-h-screen bg-background text-foreground">
+      <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
           <div className="flex min-w-0 flex-1 items-center gap-3">
             <Link
               href="/dashboard/reports"
-              className="inline-flex shrink-0 items-center gap-1 rounded-md px-2 py-1.5 text-sm text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+              className="inline-flex shrink-0 items-center gap-1 rounded-md px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
             >
               <ArrowLeft className="h-4 w-4" />
               <span className="hidden sm:inline">Reports</span>
@@ -196,7 +196,7 @@ export default function InteractiveDashboard({
               <h1 className="truncate text-lg font-semibold sm:text-xl">
                 {title}
               </h1>
-              <p className="text-xs text-zinc-500">Generated {formattedDate}</p>
+              <p className="text-xs text-muted-foreground">Generated {formattedDate}</p>
             </div>
           </div>
           <div className="ml-4 flex items-center gap-2">
@@ -204,7 +204,7 @@ export default function InteractiveDashboard({
               <AlertDialogTrigger asChild>
                 <button
                   disabled={deleting}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 px-2.5 py-1.5 text-xs font-medium text-zinc-400 transition-colors hover:bg-red-500/10 hover:text-red-400 disabled:opacity-50"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-red-500/10 hover:text-red-400 disabled:opacity-50"
                   title="Delete report"
                 >
                   <Trash2 className="h-3.5 w-3.5" />
@@ -213,16 +213,16 @@ export default function InteractiveDashboard({
                   </span>
                 </button>
               </AlertDialogTrigger>
-              <AlertDialogContent className="border-zinc-700 bg-zinc-900 text-white">
+              <AlertDialogContent className="border-border bg-card text-foreground">
                 <AlertDialogHeader>
-                  <AlertDialogTitle className="text-white">Delete report?</AlertDialogTitle>
-                  <AlertDialogDescription className="text-zinc-400">
+                  <AlertDialogTitle className="text-foreground">Delete report?</AlertDialogTitle>
+                  <AlertDialogDescription className="text-muted-foreground">
                     This will permanently delete the report and its generated
                     files. This action cannot be undone.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel className="border-zinc-600 bg-white text-black hover:bg-zinc-200">
+                  <AlertDialogCancel className="border-border bg-secondary text-foreground hover:bg-accent">
                     Cancel
                   </AlertDialogCancel>
                   <AlertDialogAction
@@ -237,7 +237,7 @@ export default function InteractiveDashboard({
             <button
               onClick={handleTogglePublic}
               disabled={togglingPublic}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 px-2.5 py-1.5 text-xs font-medium text-zinc-400 transition-colors hover:bg-white/5 hover:text-zinc-200 disabled:opacity-50"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground disabled:opacity-50"
               title={isPublic ? "Make private" : "Make public"}
             >
               {isPublic ? (
@@ -251,7 +251,7 @@ export default function InteractiveDashboard({
             </button>
             <button
               onClick={handleCopyLink}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 px-2.5 py-1.5 text-xs font-medium text-zinc-400 transition-colors hover:bg-white/5 hover:text-zinc-200"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
             >
               {copied ? (
                 <Check className="h-3.5 w-3.5 text-emerald-400" />
@@ -267,7 +267,7 @@ export default function InteractiveDashboard({
                 href={fileUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-indigo-500"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
               >
                 <Download className="h-4 w-4" />
                 <span className="hidden sm:inline">
@@ -280,7 +280,7 @@ export default function InteractiveDashboard({
                 href={docxUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-1.5 text-sm font-medium text-zinc-300 transition-colors hover:bg-white/5 hover:text-white"
+                className="inline-flex items-center gap-2 rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
               >
                 <Download className="h-4 w-4" />
                 <span className="hidden sm:inline">Download DOCX</span>
@@ -293,11 +293,11 @@ export default function InteractiveDashboard({
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:py-8">
         {narrative?.executiveSummary && (
           <section className="mb-8">
-            <div className="rounded-xl border border-white/10 bg-white/[0.03] p-5 sm:p-6">
-              <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-zinc-400">
+            <div className="rounded-xl border border-border bg-card p-5 sm:p-6">
+              <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
                 Executive Summary
               </h2>
-              <p className="leading-relaxed text-zinc-300 whitespace-pre-line">
+              <p className="leading-relaxed text-foreground whitespace-pre-line">
                 {narrative.executiveSummary}
               </p>
             </div>
@@ -306,7 +306,7 @@ export default function InteractiveDashboard({
 
         {analysis.metrics.length > 0 && (
           <section className="mb-8">
-            <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-400">
+            <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
               Key Metrics
             </h2>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -320,7 +320,7 @@ export default function InteractiveDashboard({
         {analysis.chartConfigs.length > 0 && (
           <BlurredUpgradeOverlay active={blurCharts}>
             <section className="mb-8">
-              <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-400">
+              <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
                 Visualizations
               </h2>
               <div className="grid gap-4 lg:grid-cols-2">
@@ -347,7 +347,7 @@ export default function InteractiveDashboard({
         {analysis.rankings.length > 0 && (
           <BlurredUpgradeOverlay active={blurCharts}>
             <section className="mb-8">
-              <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-400">
+              <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
                 Rankings
               </h2>
               <div className="grid gap-4 lg:grid-cols-2">
@@ -362,7 +362,7 @@ export default function InteractiveDashboard({
         {analysis.anomalies.length > 0 && (
           <BlurredUpgradeOverlay active={blurCharts}>
             <section className="mb-8">
-              <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-400">
+              <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
                 Anomalies Detected
               </h2>
               <div className="space-y-3">
@@ -377,7 +377,7 @@ export default function InteractiveDashboard({
         {analysis.correlations.length > 0 && (
           <BlurredUpgradeOverlay active={blurCharts}>
             <section className="mb-8">
-              <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-400">
+              <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
                 Correlations
               </h2>
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -392,7 +392,7 @@ export default function InteractiveDashboard({
           </BlurredUpgradeOverlay>
         )}
 
-        <footer className="mt-12 border-t border-white/10 pt-6 text-center text-xs text-zinc-600">
+        <footer className="mt-12 border-t border-border pt-6 text-center text-xs text-muted-foreground">
           <p>
             {analysis.dataProfile.rowCount.toLocaleString()} rows analyzed
             {analysis.dataProfile.dateRange && (
@@ -418,14 +418,14 @@ function BlurredUpgradeOverlay({
   return (
     <div className="relative">
       <div className="pointer-events-none select-none blur-sm">{children}</div>
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[#0a0a0f]/60 backdrop-blur-[2px]">
-        <Lock className="h-8 w-8 text-zinc-400" />
-        <p className="text-sm font-medium text-zinc-300">
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-background/60 backdrop-blur-[2px]">
+        <Lock className="h-8 w-8 text-muted-foreground" />
+        <p className="text-sm font-medium text-foreground">
           Upgrade to unlock interactive charts
         </p>
         <a
           href="/dashboard/upgrade"
-          className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-500"
+          className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
         >
           Upgrade
         </a>
@@ -447,11 +447,11 @@ function MetricCard({ metric }: { metric: KeyMetric }) {
       ? "text-emerald-400"
       : metric.trend === "down"
         ? "text-rose-400"
-        : "text-zinc-500";
+        : "text-muted-foreground";
 
   return (
-    <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4 transition-colors hover:bg-white/[0.05]">
-      <p className="mb-1 truncate text-xs font-medium text-zinc-500">
+    <div className="rounded-xl border border-border bg-card p-4 transition-colors hover:bg-accent">
+      <p className="mb-1 truncate text-xs font-medium text-muted-foreground">
         {metric.name}
       </p>
       <p className="text-2xl font-bold tracking-tight">
@@ -465,7 +465,7 @@ function MetricCard({ metric }: { metric: KeyMetric }) {
             {metric.changePercent.toFixed(1)}%
           </span>
           {metric.previousValue !== null && (
-            <span className="text-zinc-600">
+            <span className="text-muted-foreground">
               vs {formatCompact(metric.previousValue)}
             </span>
           )}
@@ -499,22 +499,22 @@ function ChartCard({
 
   return (
     <div
-      className={`rounded-xl border border-white/10 bg-white/[0.03] p-4 transition-all ${
+      className={`rounded-xl border border-border bg-card p-4 transition-all ${
         isExpanded ? "lg:col-span-2" : ""
       }`}
     >
       <div className="mb-3 flex items-start justify-between">
         <div>
-          <h3 className="text-sm font-semibold text-zinc-200">
+          <h3 className="text-sm font-semibold text-foreground">
             {config.title}
           </h3>
-          <p className="text-xs text-zinc-500">
+          <p className="text-xs text-muted-foreground">
             {config.xAxis} vs {Array.isArray(config.yAxis) ? config.yAxis.join(", ") : config.yAxis}
           </p>
         </div>
         <button
           onClick={onToggleExpand}
-          className="rounded-md p-1 text-zinc-500 transition-colors hover:bg-white/10 hover:text-zinc-300"
+          className="rounded-md p-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
           title={isExpanded ? "Collapse" : "Expand"}
         >
           <BarChart3 className="h-4 w-4" />
@@ -528,7 +528,7 @@ function ChartCard({
       </div>
 
       {narrativeText && (
-        <p className="mt-3 text-xs leading-relaxed text-zinc-400">
+        <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
           {narrativeText}
         </p>
       )}
@@ -542,17 +542,17 @@ function RankingCard({ ranking }: { ranking: RankingResult }) {
   const maxValue = items.length > 0 ? Math.max(...items.map((i) => i.value)) : 1;
 
   return (
-    <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+    <div className="rounded-xl border border-border bg-card p-4">
       <div className="mb-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Trophy className="h-4 w-4 text-amber-400" />
-          <h3 className="text-sm font-semibold text-zinc-200">
+          <h3 className="text-sm font-semibold text-foreground">
             {ranking.column} by {ranking.groupColumn}
           </h3>
         </div>
         <button
           onClick={() => setShowBottom(!showBottom)}
-          className="flex items-center gap-1 rounded-md px-2 py-0.5 text-xs text-zinc-500 transition-colors hover:bg-white/10 hover:text-zinc-300"
+          className="flex items-center gap-1 rounded-md px-2 py-0.5 text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
         >
           <ArrowUpDown className="h-3 w-3" />
           {showBottom ? "Top" : "Bottom"}
@@ -562,17 +562,17 @@ function RankingCard({ ranking }: { ranking: RankingResult }) {
         {items.slice(0, 5).map((item, i) => (
           <div key={`${item.label}-${i}`}>
             <div className="flex items-center justify-between text-xs">
-              <span className="truncate text-zinc-300" title={item.label}>
-                <span className="mr-2 text-zinc-600">{i + 1}.</span>
+              <span className="truncate text-foreground" title={item.label}>
+                <span className="mr-2 text-muted-foreground">{i + 1}.</span>
                 {item.label}
               </span>
-              <span className="ml-2 font-medium text-zinc-200 tabular-nums">
+              <span className="ml-2 font-medium text-foreground tabular-nums">
                 {item.formattedValue}
               </span>
             </div>
-            <div className="mt-1 h-1 overflow-hidden rounded-full bg-white/5">
+            <div className="mt-1 h-1 overflow-hidden rounded-full bg-secondary">
               <div
-                className="h-full rounded-full bg-indigo-500/60"
+                className="h-full rounded-full bg-primary/60"
                 style={{
                   width: `${maxValue > 0 ? (item.value / maxValue) * 100 : 0}%`,
                 }}
@@ -594,11 +594,11 @@ function AnomalyRow({ anomaly }: { anomaly: Anomaly }) {
         : "text-yellow-400";
 
   return (
-    <div className="flex items-start gap-3 rounded-lg border border-white/10 bg-white/[0.03] p-3">
+    <div className="flex items-start gap-3 rounded-lg border border-border bg-card p-3">
       <AlertTriangle className={`mt-0.5 h-4 w-4 shrink-0 ${severity}`} />
       <div className="min-w-0 flex-1">
-        <p className="text-sm text-zinc-300">{anomaly.description}</p>
-        <div className="mt-1 flex flex-wrap gap-3 text-xs text-zinc-500">
+        <p className="text-sm text-foreground">{anomaly.description}</p>
+        <div className="mt-1 flex flex-wrap gap-3 text-xs text-muted-foreground">
           <span>Column: {anomaly.column}</span>
           <span>Value: {formatCompact(anomaly.value)}</span>
           <span>Expected: ~{formatCompact(anomaly.expected)}</span>
@@ -613,24 +613,24 @@ function CorrelationCard({ correlation }: { correlation: Correlation }) {
   const strengthColor: Record<string, string> = {
     strong: "text-emerald-400 bg-emerald-400/10",
     moderate: "text-amber-400 bg-amber-400/10",
-    weak: "text-zinc-400 bg-zinc-400/10",
-    none: "text-zinc-600 bg-zinc-600/10",
+    weak: "text-muted-foreground bg-muted",
+    none: "text-muted-foreground bg-muted",
   };
 
   return (
-    <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+    <div className="rounded-xl border border-border bg-card p-4">
       <div className="mb-2 flex items-center gap-2">
-        <Link2 className="h-4 w-4 text-zinc-500" />
+        <Link2 className="h-4 w-4 text-muted-foreground" />
         <span
           className={`rounded-full px-2 py-0.5 text-xs font-medium ${strengthColor[correlation.strength]}`}
         >
           {correlation.strength}
         </span>
       </div>
-      <p className="text-sm text-zinc-300">
+      <p className="text-sm text-foreground">
         {correlation.columnA} &harr; {correlation.columnB}
       </p>
-      <p className="mt-1 text-xs tabular-nums text-zinc-500">
+      <p className="mt-1 text-xs tabular-nums text-muted-foreground">
         r = {correlation.coefficient.toFixed(3)}
       </p>
     </div>

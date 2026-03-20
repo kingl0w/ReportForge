@@ -18,7 +18,7 @@ const testimonials: Testimonial[] = [
     name: "Sarah Chen",
     title: "Head of Analytics, Meridian",
     initials: "SC",
-    avatarColor: "bg-blue-500",
+    avatarColor: "bg-primary",
   },
   {
     quote:
@@ -26,7 +26,7 @@ const testimonials: Testimonial[] = [
     name: "Marcus Rodriguez",
     title: "E-commerce Director, Bolt",
     initials: "MR",
-    avatarColor: "bg-violet-500",
+    avatarColor: "bg-amber-500",
   },
   {
     quote:
@@ -44,7 +44,7 @@ function StarRating() {
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
-          className="h-4 w-4 fill-yellow-500 text-yellow-500"
+          className="h-4 w-4 fill-amber-400 text-amber-400"
         />
       ))}
     </div>
@@ -53,11 +53,11 @@ function StarRating() {
 
 export default function Testimonials() {
   return (
-    <section className="relative py-24 sm:py-32">
+    <section className="relative bg-muted/50 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Loved by Data-Driven Teams
             </h2>
           </div>
@@ -66,10 +66,10 @@ export default function Testimonials() {
         <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
           {testimonials.map((testimonial, index) => (
             <FadeIn key={testimonial.name} delay={0.1 * (index + 1)}>
-              <div className="flex h-full flex-col rounded-xl border border-slate-700/50 bg-slate-800/50 p-6">
+              <div className="flex h-full flex-col rounded-xl border border-border bg-card p-6">
                 <StarRating />
                 <blockquote className="mt-4 flex-1">
-                  <p className="text-sm italic leading-relaxed text-slate-300">
+                  <p className="text-sm italic leading-relaxed text-muted-foreground">
                     &ldquo;{testimonial.quote}&rdquo;
                   </p>
                 </blockquote>
@@ -80,10 +80,10 @@ export default function Testimonials() {
                     {testimonial.initials}
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-white">
+                    <p className="text-sm font-semibold text-foreground">
                       {testimonial.name}
                     </p>
-                    <p className="text-xs text-slate-400">
+                    <p className="text-xs text-muted-foreground">
                       {testimonial.title}
                     </p>
                   </div>

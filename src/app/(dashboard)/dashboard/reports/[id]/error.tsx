@@ -35,8 +35,8 @@ export default function ReportDetailError({
           </p>
         </CardContent>
         <CardFooter className="justify-center gap-2">
-          <Button className="bg-blue-600 text-white font-medium hover:bg-blue-500" onClick={reset}>Try Again</Button>
-          <Button className="bg-white/10 border border-white/20 text-white hover:bg-white/20" asChild>
+          <Button className="bg-primary text-foreground font-medium hover:bg-primary/90" onClick={reset}>Try Again</Button>
+          <Button className="bg-secondary border border-border text-foreground hover:bg-accent" asChild>
             <Link href="/dashboard/reports">Back to Reports</Link>
           </Button>
         </CardFooter>

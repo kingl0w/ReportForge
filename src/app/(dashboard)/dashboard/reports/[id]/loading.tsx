@@ -13,7 +13,7 @@ export default function ReportDetailLoading() {
         </div>
       </div>
 
-      <Card className="bg-card">
+      <Card>
         <CardHeader>
           <Skeleton className="h-5 w-32" />
         </CardHeader>
@@ -27,7 +27,7 @@ export default function ReportDetailLoading() {
         </CardContent>
       </Card>
 
-      <Card className="bg-card">
+      <Card>
         <CardHeader>
           <Skeleton className="h-5 w-28" />
         </CardHeader>

@@ -9,7 +9,7 @@ const ReportWizard = dynamic(
   () => import("@/components/reports/ReportWizard"),
   {
     loading: () => (
-      <Card className="bg-card">
+      <Card>
         <CardContent className="flex flex-col items-center justify-center py-16">
           <Skeleton className="h-16 w-16 rounded-2xl" />
           <Skeleton className="mt-4 h-5 w-48" />

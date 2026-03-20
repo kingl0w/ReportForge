@@ -13,13 +13,13 @@ interface Template {
 function BarViz() {
   return (
     <div className="flex items-end gap-1 h-24 px-4 pt-4">
-      <div className="w-full rounded-t bg-blue-500/40 h-[35%]" />
-      <div className="w-full rounded-t bg-blue-500/60 h-[60%]" />
-      <div className="w-full rounded-t bg-blue-500/80 h-[85%]" />
-      <div className="w-full rounded-t bg-blue-500 h-[70%]" />
-      <div className="w-full rounded-t bg-blue-500/70 h-[50%]" />
-      <div className="w-full rounded-t bg-violet-500/60 h-[90%]" />
-      <div className="w-full rounded-t bg-violet-500/80 h-[65%]" />
+      <div className="w-full rounded-t bg-primary/30 h-[35%]" />
+      <div className="w-full rounded-t bg-primary/50 h-[60%]" />
+      <div className="w-full rounded-t bg-primary/70 h-[85%]" />
+      <div className="w-full rounded-t bg-primary h-[70%]" />
+      <div className="w-full rounded-t bg-primary/60 h-[50%]" />
+      <div className="w-full rounded-t bg-amber-500/50 h-[90%]" />
+      <div className="w-full rounded-t bg-amber-500/70 h-[65%]" />
     </div>
   );
 }
@@ -35,8 +35,8 @@ function AreaViz() {
       >
         <defs>
           <linearGradient id="area-grad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.4" />
-            <stop offset="100%" stopColor="#3B82F6" stopOpacity="0.05" />
+            <stop offset="0%" stopColor="oklch(0.47 0.1 200)" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="oklch(0.47 0.1 200)" stopOpacity="0.05" />
           </linearGradient>
         </defs>
         <path
@@ -45,7 +45,7 @@ function AreaViz() {
         />
         <path
           d="M0 60 Q30 50 50 35 T100 25 T150 40 T200 20"
-          stroke="#3B82F6"
+          stroke="oklch(0.47 0.1 200)"
           strokeWidth="2"
           fill="none"
         />
@@ -64,7 +64,7 @@ function DonutViz() {
             cy="18"
             r="14"
             fill="none"
-            stroke="#1e293b"
+            stroke="oklch(0.91 0.005 85)"
             strokeWidth="4"
           />
           <circle
@@ -72,7 +72,7 @@ function DonutViz() {
             cy="18"
             r="14"
             fill="none"
-            stroke="#3B82F6"
+            stroke="oklch(0.47 0.1 200)"
             strokeWidth="4"
             strokeDasharray="35 65"
             strokeDashoffset="0"
@@ -82,7 +82,7 @@ function DonutViz() {
             cy="18"
             r="14"
             fill="none"
-            stroke="#8B5CF6"
+            stroke="oklch(0.62 0.14 60)"
             strokeWidth="4"
             strokeDasharray="25 75"
             strokeDashoffset="-35"
@@ -92,7 +92,7 @@ function DonutViz() {
             cy="18"
             r="14"
             fill="none"
-            stroke="#06B6D4"
+            stroke="oklch(0.52 0.10 155)"
             strokeWidth="4"
             strokeDasharray="20 80"
             strokeDashoffset="-60"
@@ -101,16 +101,16 @@ function DonutViz() {
       </div>
       <div className="ml-4 flex flex-col gap-1">
         <div className="flex items-center gap-1.5">
-          <div className="h-2 w-2 rounded-full bg-blue-500" />
-          <span className="text-[10px] text-slate-500">BTC</span>
+          <div className="h-2 w-2 rounded-full bg-primary" />
+          <span className="text-[10px] text-muted-foreground">BTC</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <div className="h-2 w-2 rounded-full bg-violet-500" />
-          <span className="text-[10px] text-slate-500">ETH</span>
+          <div className="h-2 w-2 rounded-full bg-amber-500" />
+          <span className="text-[10px] text-muted-foreground">ETH</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <div className="h-2 w-2 rounded-full bg-cyan-500" />
-          <span className="text-[10px] text-slate-500">SOL</span>
+          <div className="h-2 w-2 rounded-full bg-emerald-500" />
+          <span className="text-[10px] text-muted-foreground">SOL</span>
         </div>
       </div>
     </div>
@@ -121,29 +121,29 @@ function TableViz() {
   return (
     <div className="h-24 px-4 pt-4 space-y-1.5">
       <div className="flex gap-2">
-        <div className="h-2 w-1/3 rounded bg-slate-600/60" />
-        <div className="h-2 w-1/4 rounded bg-slate-600/60" />
-        <div className="h-2 w-1/5 rounded bg-slate-600/60" />
+        <div className="h-2 w-1/3 rounded bg-muted-foreground/30" />
+        <div className="h-2 w-1/4 rounded bg-muted-foreground/30" />
+        <div className="h-2 w-1/5 rounded bg-muted-foreground/30" />
       </div>
       <div className="flex gap-2">
-        <div className="h-2 w-1/3 rounded bg-blue-500/30" />
-        <div className="h-2 w-1/4 rounded bg-blue-500/30" />
-        <div className="h-2 w-1/5 rounded bg-blue-500/30" />
+        <div className="h-2 w-1/3 rounded bg-primary/20" />
+        <div className="h-2 w-1/4 rounded bg-primary/20" />
+        <div className="h-2 w-1/5 rounded bg-primary/20" />
       </div>
       <div className="flex gap-2">
-        <div className="h-2 w-1/3 rounded bg-blue-500/20" />
-        <div className="h-2 w-1/4 rounded bg-blue-500/20" />
-        <div className="h-2 w-1/5 rounded bg-blue-500/20" />
+        <div className="h-2 w-1/3 rounded bg-primary/10" />
+        <div className="h-2 w-1/4 rounded bg-primary/10" />
+        <div className="h-2 w-1/5 rounded bg-primary/10" />
       </div>
       <div className="flex gap-2">
-        <div className="h-2 w-1/3 rounded bg-blue-500/30" />
-        <div className="h-2 w-1/4 rounded bg-blue-500/30" />
-        <div className="h-2 w-1/5 rounded bg-blue-500/30" />
+        <div className="h-2 w-1/3 rounded bg-primary/20" />
+        <div className="h-2 w-1/4 rounded bg-primary/20" />
+        <div className="h-2 w-1/5 rounded bg-primary/20" />
       </div>
       <div className="flex gap-2">
-        <div className="h-2 w-1/3 rounded bg-blue-500/20" />
-        <div className="h-2 w-1/4 rounded bg-blue-500/20" />
-        <div className="h-2 w-1/5 rounded bg-blue-500/20" />
+        <div className="h-2 w-1/3 rounded bg-primary/10" />
+        <div className="h-2 w-1/4 rounded bg-primary/10" />
+        <div className="h-2 w-1/5 rounded bg-primary/10" />
       </div>
     </div>
   );
@@ -152,11 +152,11 @@ function TableViz() {
 function FunnelViz() {
   return (
     <div className="flex flex-col items-center gap-1 h-24 px-4 pt-4">
-      <div className="h-3 w-[90%] rounded bg-blue-500/60" />
-      <div className="h-3 w-[70%] rounded bg-blue-500/50" />
-      <div className="h-3 w-[50%] rounded bg-violet-500/50" />
-      <div className="h-3 w-[35%] rounded bg-violet-500/40" />
-      <div className="h-3 w-[20%] rounded bg-violet-500/60" />
+      <div className="h-3 w-[90%] rounded bg-primary/50" />
+      <div className="h-3 w-[70%] rounded bg-primary/40" />
+      <div className="h-3 w-[50%] rounded bg-primary/35" />
+      <div className="h-3 w-[35%] rounded bg-amber-500/40" />
+      <div className="h-3 w-[20%] rounded bg-amber-500/50" />
     </div>
   );
 }
@@ -165,11 +165,11 @@ function AiViz() {
   return (
     <div className="flex items-center justify-center h-24 pt-4">
       <div className="relative">
-        <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-violet-500/20 flex items-center justify-center">
+        <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
           <svg
             viewBox="0 0 24 24"
             fill="none"
-            className="h-6 w-6 text-blue-400"
+            className="h-6 w-6 text-primary"
             stroke="currentColor"
             strokeWidth="1.5"
           >
@@ -180,7 +180,7 @@ function AiViz() {
             />
           </svg>
         </div>
-        <div className="absolute -top-1 -right-1 h-2.5 w-2.5 rounded-full bg-violet-500 animate-pulse" />
+        <div className="absolute -top-1 -right-1 h-2.5 w-2.5 rounded-full bg-primary animate-pulse" />
       </div>
     </div>
   );
@@ -235,15 +235,15 @@ export default function TemplateGallery() {
   return (
     <section
       id="templates"
-      className="bg-slate-950 py-24 px-4 sm:px-6 lg:px-8"
+      className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8"
     >
       <div className="mx-auto max-w-6xl">
         <FadeIn>
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Templates for Every Report
             </h2>
-            <p className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">
+            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
               Choose from professionally designed templates or let AI pick the
               best one for your data.
             </p>
@@ -256,17 +256,17 @@ export default function TemplateGallery() {
               key={template.name}
               delay={index * 0.08}
             >
-              <div className="group rounded-xl border border-slate-700/50 bg-slate-800/50 overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:border-blue-500/50">
-                <div className="bg-slate-900/50">{template.visualization}</div>
+              <div className="group rounded-xl border border-border bg-card overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:border-primary/50 hover:shadow-md">
+                <div className="bg-muted/50">{template.visualization}</div>
 
                 <div className="p-6">
-                  <h3 className="text-base font-semibold text-white mb-2">
+                  <h3 className="text-base font-semibold text-foreground mb-2">
                     {template.name}
                   </h3>
-                  <p className="text-sm leading-relaxed text-slate-400 mb-4">
+                  <p className="text-sm leading-relaxed text-muted-foreground mb-4">
                     {template.description}
                   </p>
-                  <span className="inline-flex items-center rounded-full bg-slate-700/50 px-2.5 py-0.5 text-xs font-medium text-slate-300">
+                  <span className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
                     {template.chartType}
                   </span>
                 </div>

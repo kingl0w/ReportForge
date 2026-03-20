@@ -8,7 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { FileText, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import Logo from "@/components/shared/Logo";
 
 export default function SignupPage() {
   const [name, setName] = useState("");
@@ -71,31 +72,30 @@ export default function SignupPage() {
 
   return (
     <div className="grid min-h-screen lg:grid-cols-2">
-      <div className="hidden lg:flex flex-col justify-between bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 p-12 text-white">
-        <Link href="/" className="flex items-center gap-2">
-          <FileText className="h-8 w-8" />
-          <span className="text-xl font-bold">ReportForge</span>
+      <div className="hidden lg:flex flex-col justify-between bg-muted p-12">
+        <Link href="/">
+          <Logo size="lg" />
         </Link>
         <div className="space-y-6">
-          <h2 className="text-3xl font-bold leading-tight">
+          <h2 className="text-3xl font-bold leading-tight text-foreground">
             Professional reports from raw data — in seconds.
           </h2>
-          <ul className="space-y-3 text-zinc-300">
+          <ul className="space-y-3 text-muted-foreground">
             <li className="flex items-center gap-2">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-xs">1</span>
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-xs font-medium text-primary">1</span>
               Upload CSV, Excel, or JSON data
             </li>
             <li className="flex items-center gap-2">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-xs">2</span>
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-xs font-medium text-primary">2</span>
               AI analyzes and picks the best template
             </li>
             <li className="flex items-center gap-2">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-xs">3</span>
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-xs font-medium text-primary">3</span>
               Download a polished PDF or DOCX report
             </li>
           </ul>
         </div>
-        <p className="text-sm text-zinc-500">
+        <p className="text-sm text-muted-foreground">
           Start free — 1 report included. No credit card required.
         </p>
       </div>
@@ -103,9 +103,8 @@ export default function SignupPage() {
       <div className="flex items-center justify-center p-8">
         <Card className="w-full max-w-md border-0 shadow-none">
           <CardHeader className="space-y-1 text-center">
-            <Link href="/" className="flex items-center justify-center gap-2 lg:hidden mb-4">
-              <FileText className="h-6 w-6" />
-              <span className="text-lg font-bold">ReportForge</span>
+            <Link href="/" className="flex justify-center lg:hidden mb-4">
+              <Logo size="sm" />
             </Link>
             <CardTitle className="text-2xl font-bold">Create an account</CardTitle>
             <CardDescription>
@@ -114,11 +113,11 @@ export default function SignupPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             {success ? (
-              <div className="rounded-lg border border-green-200 bg-green-50 p-4 text-center dark:border-green-900 dark:bg-green-950">
-                <p className="font-medium text-green-800 dark:text-green-200">
+              <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center">
+                <p className="font-medium text-emerald-800">
                   Check your email
                 </p>
-                <p className="mt-1 text-sm text-green-700 dark:text-green-300">
+                <p className="mt-1 text-sm text-emerald-700">
                   We&apos;ve sent a confirmation link to <strong>{email}</strong>.
                   Click it to activate your account.
                 </p>

@@ -161,7 +161,7 @@ export default function BuilderPreview({
     <div className="flex h-full flex-col">
       <div
         ref={containerRef}
-        className="flex-1 overflow-auto bg-zinc-100 dark:bg-zinc-800/50 p-6"
+        className="flex-1 overflow-auto bg-muted p-6"
       >
         <div
           className="mx-auto origin-top-left"
@@ -199,7 +199,7 @@ export default function BuilderPreview({
                     key={section.id}
                     className={cn(
                       "relative cursor-pointer transition-shadow",
-                      isSelected && "ring-2 ring-blue-500 ring-inset"
+                      isSelected && "ring-2 ring-primary ring-inset"
                     )}
                     onClick={() => onSelectSection(section.id)}
                   >
@@ -244,8 +244,8 @@ export default function BuilderPreview({
               className={cn(
                 "rounded px-2 py-0.5 text-[11px] font-medium transition-colors",
                 zoomMode === z.value
-                  ? "bg-blue-500/15 text-blue-400"
-                  : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                  ? "bg-primary/15 text-primary"
+                  : "text-muted-foreground hover:text-foreground hover:bg-accent"
               )}
               onClick={() => setZoomMode(z.value)}
             >
@@ -259,17 +259,17 @@ export default function BuilderPreview({
           <DialogTrigger asChild>
             <Button
               size="sm"
-              className="h-7 gap-1.5 bg-white/10 border border-white/20 text-white text-xs hover:bg-white/20"
+              className="h-7 gap-1.5 bg-secondary border border-border text-foreground text-xs hover:bg-accent"
             >
               <Maximize className="h-3 w-3" />
               Full Preview
             </Button>
           </DialogTrigger>
-          <DialogContent className="flex h-[90vh] max-w-4xl flex-col p-0 border-zinc-700 bg-zinc-900 text-white">
-            <DialogHeader className="border-b border-zinc-700 px-6 py-4">
-              <DialogTitle className="text-white">Report Preview</DialogTitle>
+          <DialogContent className="flex h-[90vh] max-w-4xl flex-col p-0 border-border bg-card text-foreground">
+            <DialogHeader className="border-b border-border px-6 py-4">
+              <DialogTitle className="text-foreground">Report Preview</DialogTitle>
             </DialogHeader>
-            <div className="flex-1 overflow-auto bg-zinc-800">
+            <div className="flex-1 overflow-auto bg-muted">
               <iframe
                 srcDoc={fullHtml}
                 title="Template full preview"

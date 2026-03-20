@@ -77,7 +77,7 @@ export default function EbayConnectDialog({
 
         <DialogFooter>
           <Button
-            className="bg-white/10 border border-white/20 text-white hover:bg-white/20"
+            className="bg-secondary border border-border text-foreground hover:bg-accent"
             onClick={() => handleOpenChange(false)}
             disabled={loading}
           >
@@ -86,7 +86,7 @@ export default function EbayConnectDialog({
           <Button
             onClick={handleConnect}
             disabled={loading}
-            className="bg-[#0064d2] text-white font-medium hover:bg-[#0050a8]"
+            className="bg-[#0064d2] text-white font-medium hover:bg-[#0064d2]/90"
           >
             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             Connect eBay

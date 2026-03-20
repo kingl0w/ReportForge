@@ -127,7 +127,7 @@ export default function DataUploader({ onDataReady, planLimits }: DataUploaderPr
 
   if (status === "idle") {
     return (
-      <Card className="bg-card">
+      <Card>
         <CardContent className="pt-6">
           <div
             onDragOver={handleDragOver}
@@ -137,7 +137,7 @@ export default function DataUploader({ onDataReady, planLimits }: DataUploaderPr
             className={cn(
               "flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed p-12 transition-colors",
               dragOver
-                ? "border-blue-500 bg-blue-600/5"
+                ? "border-primary bg-primary/5"
                 : "border-border hover:border-muted-foreground/50 hover:bg-accent/30"
             )}
           >
@@ -149,8 +149,8 @@ export default function DataUploader({ onDataReady, planLimits }: DataUploaderPr
               onChange={handleFileSelect}
               className="hidden"
             />
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-600/10">
-              <Upload className="h-7 w-7 text-blue-500" />
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
+              <Upload className="h-7 w-7 text-primary" />
             </div>
             <p className="mt-4 text-sm font-medium text-foreground">
               Drop your files here, or click to browse
@@ -176,9 +176,9 @@ export default function DataUploader({ onDataReady, planLimits }: DataUploaderPr
 
   if (status === "uploading" || status === "parsing") {
     return (
-      <Card className="bg-card">
+      <Card>
         <CardContent className="flex flex-col items-center py-12">
-          <Loader2 className="h-8 w-8 animate-spin text-blue-500" />
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
           <p className="mt-4 text-sm font-medium text-foreground">
             {status === "uploading" ? "Reading file..." : "Parsing data..."}
           </p>
@@ -209,7 +209,7 @@ export default function DataUploader({ onDataReady, planLimits }: DataUploaderPr
           <p className="mt-1 max-w-md text-center text-sm text-muted-foreground">
             {error}
           </p>
-          <Button onClick={reset} className="mt-4 bg-white/10 border border-white/20 text-white hover:bg-white/20">
+          <Button onClick={reset} className="mt-4 bg-secondary border border-border text-foreground hover:bg-accent">
             Try again
           </Button>
         </CardContent>
@@ -222,7 +222,7 @@ export default function DataUploader({ onDataReady, planLimits }: DataUploaderPr
 
     return (
       <div className="space-y-4">
-        <Card className="bg-card">
+        <Card>
           <CardContent className="pt-6">
             <div className="space-y-3">
               {files.map((entry, index) => (
@@ -266,7 +266,7 @@ export default function DataUploader({ onDataReady, planLimits }: DataUploaderPr
                       <Button
                         variant="ghost"
                         size="icon"
-                        className="h-7 w-7 text-white/70 hover:text-white hover:bg-white/10 dark:hover:bg-white/10"
+                        className="h-7 w-7 text-muted-foreground hover:text-foreground hover:bg-accent"
                         onClick={() => removeFile(index)}
                       >
                         <X className="h-3.5 w-3.5" />
@@ -285,11 +285,11 @@ export default function DataUploader({ onDataReady, planLimits }: DataUploaderPr
         )}
 
         {multiFile && status === "preview" && (
-          <Card className="bg-card">
+          <Card>
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <Layers className="h-4 w-4 text-blue-500" />
+                  <Layers className="h-4 w-4 text-primary" />
                   <span className="text-sm font-medium text-foreground">Combine Strategy</span>
                 </div>
                 {schemaComparison && (
@@ -306,7 +306,7 @@ export default function DataUploader({ onDataReady, planLimits }: DataUploaderPr
                     className={cn(
                       "rounded-lg border px-3 py-2 text-left transition-colors",
                       combineStrategy === opt.value
-                        ? "border-blue-500 bg-blue-600/10"
+                        ? "border-primary bg-primary/10"
                         : "border-border hover:border-muted-foreground/50"
                     )}
                   >
@@ -369,7 +369,7 @@ export default function DataUploader({ onDataReady, planLimits }: DataUploaderPr
           </Card>
         )}
 
-        <Card className="bg-card">
+        <Card>
           <CardHeader>
             <CardTitle className="text-sm text-foreground">
               Column Summary
@@ -389,7 +389,7 @@ export default function DataUploader({ onDataReady, planLimits }: DataUploaderPr
           </CardContent>
         </Card>
 
-        <Card className="bg-card">
+        <Card>
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="text-sm text-foreground">
               Data Preview
@@ -435,14 +435,14 @@ export default function DataUploader({ onDataReady, planLimits }: DataUploaderPr
 
         {status === "preview" && (
           <div className="flex justify-end gap-3">
-            <Button className="bg-white/10 border border-white/20 text-white hover:bg-white/20" onClick={reset}>
+            <Button className="bg-secondary border border-border text-foreground hover:bg-accent" onClick={reset}>
               Choose different file
             </Button>
-            <Button className="bg-white/10 border border-white/20 text-white hover:bg-white/20" onClick={handleUsePreview}>
+            <Button className="bg-secondary border border-border text-foreground hover:bg-accent" onClick={handleUsePreview}>
               Use without uploading
             </Button>
             <Button
-              className="bg-blue-600 text-white font-medium hover:bg-blue-500"
+              className="bg-primary text-foreground font-medium hover:bg-primary/90"
               onClick={handleConfirm}
             >
               Upload &amp; continue
@@ -490,11 +490,11 @@ function SchemaComparisonCard({ comparison }: { comparison: SchemaComparison }) 
   }
 
   return (
-    <Card className="bg-card">
+    <Card>
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2 text-sm text-foreground">
-            <ArrowDownUp className="h-4 w-4 text-blue-500" />
+            <ArrowDownUp className="h-4 w-4 text-primary" />
             Schema Comparison
           </CardTitle>
           <div className="flex items-center gap-3 text-xs text-muted-foreground">
@@ -504,7 +504,7 @@ function SchemaComparisonCard({ comparison }: { comparison: SchemaComparison }) 
               <span className="text-emerald-500">{detectedKeys.length} key{detectedKeys.length !== 1 ? "s" : ""} detected</span>
             )}
             {hasWideDateColumns && (
-              <span className="text-purple-400">date columns detected</span>
+              <span className="text-primary">date columns detected</span>
             )}
           </div>
         </div>
@@ -540,7 +540,7 @@ function SchemaComparisonCard({ comparison }: { comparison: SchemaComparison }) 
                     className={cn(
                       "border-border hover:bg-accent/30",
                       isKey && "bg-emerald-500/5",
-                      isShared && !isKey && "bg-blue-500/5"
+                      isShared && !isKey && "bg-primary/5"
                     )}
                   >
                     <TableCell className="sticky left-0 bg-card text-xs font-medium text-foreground">
@@ -552,7 +552,7 @@ function SchemaComparisonCard({ comparison }: { comparison: SchemaComparison }) 
                           </Badge>
                         )}
                         {isShared && !isKey && (
-                          <Badge className="bg-blue-600/20 px-1.5 py-0 text-[10px] text-blue-400">
+                          <Badge className="bg-primary/20 px-1.5 py-0 text-[10px] text-primary">
                             shared
                           </Badge>
                         )}
@@ -598,7 +598,7 @@ function ToggleChip({
       className={cn(
         "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs transition-colors",
         active
-          ? "border-blue-500 bg-blue-600/10 text-blue-400"
+          ? "border-primary bg-primary/10 text-primary"
           : "border-border text-muted-foreground hover:border-muted-foreground/50"
       )}
     >
@@ -624,10 +624,10 @@ function FileIcon({ ext }: { ext: string }) {
 
 function FileTypeIcon({ fileName }: { fileName: string }) {
   const ext = fileName.split(".").pop()?.toLowerCase();
-  const iconClass = "h-5 w-5 text-blue-500";
+  const iconClass = "h-5 w-5 text-primary";
 
   return (
-    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600/10">
+    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
       {ext === "csv" && <FileText className={iconClass} />}
       {(ext === "xlsx" || ext === "xls" || ext === "xlsm") && (
         <FileSpreadsheet className={iconClass} />
@@ -645,8 +645,8 @@ function FileTypeIcon({ fileName }: { fileName: string }) {
 }
 
 const TYPE_COLORS: Record<ColumnType, string> = {
-  string: "bg-slate-500/20 text-slate-400",
-  number: "bg-blue-500/20 text-blue-400",
+  string: "bg-muted text-muted-foreground",
+  number: "bg-primary/20 text-primary",
   date: "bg-purple-500/20 text-purple-400",
   currency: "bg-emerald-500/20 text-emerald-400",
   percentage: "bg-amber-500/20 text-amber-400",

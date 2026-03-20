@@ -327,13 +327,13 @@ export default function ReportWizard() {
       />
 
       {draftLoaded && state.step > 1 && (
-        <div className="flex items-center justify-between rounded-lg border border-blue-500/30 bg-blue-500/5 px-4 py-3">
-          <p className="text-sm text-blue-400">
+        <div className="flex items-center justify-between rounded-lg border border-primary/30 bg-primary/5 px-4 py-3">
+          <p className="text-sm text-primary">
             Draft restored from your previous session.
           </p>
           <Button
             size="sm"
-            className="bg-white/10 border border-white/20 text-white hover:bg-white/20"
+            className="bg-secondary border border-border text-foreground hover:bg-accent"
             onClick={handleStartOver}
           >
             Start Over
@@ -425,7 +425,7 @@ export default function ReportWizard() {
         <div>
           {state.step > 1 && (
             <Button
-              className="h-10 bg-white/10 border border-white/20 text-white hover:bg-white/20"
+              className="h-10 bg-secondary border border-border text-foreground hover:bg-accent"
               onClick={() => goTo((state.step - 1) as Step)}
               disabled={generation.isGenerating}
             >
@@ -438,7 +438,7 @@ export default function ReportWizard() {
           {state.step > 1 && (
             <Button
               variant="ghost"
-              className="h-10 text-white/70 hover:text-white hover:bg-white/10 dark:hover:bg-white/10"
+              className="h-10 text-muted-foreground hover:text-foreground hover:bg-accent"
               onClick={handleStartOver}
             >
               <RotateCcw className="mr-2 h-4 w-4" />
@@ -447,7 +447,7 @@ export default function ReportWizard() {
           )}
           {state.step === 2 && state.analysis && !analyzing && (
             <Button
-              className="h-10 bg-blue-600 text-white font-medium hover:bg-blue-500"
+              className="h-10 bg-primary text-primary-foreground font-medium hover:bg-primary/90"
               onClick={() => goTo(3)}
             >
               Customize Report
@@ -456,7 +456,7 @@ export default function ReportWizard() {
           )}
           {state.step === 3 && (
             <Button
-              className="h-10 bg-blue-600 text-white font-medium hover:bg-blue-500"
+              className="h-10 bg-primary text-primary-foreground font-medium hover:bg-primary/90"
               onClick={() => goTo(4)}
             >
               Preview &amp; Generate
@@ -500,7 +500,7 @@ function StepIndicator({
                 "flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium transition-colors",
                 isComplete &&
                   "cursor-pointer text-emerald-500 hover:bg-emerald-500/10",
-                isCurrent && "bg-blue-600/15 text-blue-500",
+                isCurrent && "bg-primary/15 text-primary",
                 !isComplete && !isCurrent && "text-muted-foreground"
               )}
             >
@@ -508,7 +508,7 @@ function StepIndicator({
                 className={cn(
                   "flex h-6 w-6 items-center justify-center rounded-full text-xs",
                   isComplete && "bg-emerald-500/20",
-                  isCurrent && "bg-blue-600 text-white",
+                  isCurrent && "bg-primary text-primary-foreground",
                   !isComplete && !isCurrent && "bg-muted"
                 )}
               >
@@ -585,8 +585,8 @@ function StepUpload({
           className={cn(
             "flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors",
             tab === "file"
-              ? "bg-blue-600 text-white"
-              : "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
+              ? "bg-primary text-primary-foreground"
+              : "bg-secondary text-muted-foreground hover:bg-accent hover:text-foreground"
           )}
         >
           <Upload className="h-4 w-4" />
@@ -598,8 +598,8 @@ function StepUpload({
           className={cn(
             "flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors",
             tab === "connection"
-              ? "bg-blue-600 text-white"
-              : "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
+              ? "bg-primary text-primary-foreground"
+              : "bg-secondary text-muted-foreground hover:bg-accent hover:text-foreground"
           )}
         >
           <Store className="h-4 w-4" />
@@ -618,7 +618,7 @@ function StepUpload({
           )}
 
           {!connections.loading && connections.connections.length === 0 && (
-            <Card className="bg-card">
+            <Card>
               <CardContent className="flex flex-col items-center gap-3 py-12 text-center">
                 <Store className="h-10 w-10 text-muted-foreground" />
                 <p className="text-sm text-muted-foreground">
@@ -626,7 +626,7 @@ function StepUpload({
                 </p>
                 <a
                   href="/dashboard/connections"
-                  className="text-sm font-medium text-blue-400 hover:text-blue-300"
+                  className="text-sm font-medium text-primary hover:text-primary/80"
                 >
                   Connect a store (Shopify, eBay)
                 </a>
@@ -671,7 +671,7 @@ function StepUpload({
                     </div>
                     <Button
                       size="sm"
-                      className="gap-2 bg-blue-600 text-white hover:bg-blue-500"
+                      className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
                       onClick={() =>
                         handleUseConnection(conn.id, conn.provider)
                       }
@@ -709,9 +709,9 @@ function StepAnalysis({
     return (
       <div className="flex flex-col items-center justify-center py-16">
         <div className="relative">
-          <div className="absolute inset-0 animate-ping rounded-full bg-blue-500/20" />
-          <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-blue-600/15">
-            <Sparkles className="h-7 w-7 text-blue-500" />
+          <div className="absolute inset-0 animate-ping rounded-full bg-primary/20" />
+          <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-primary/15">
+            <Sparkles className="h-7 w-7 text-primary" />
           </div>
         </div>
         <p className="mt-6 text-sm font-medium text-foreground">
@@ -741,7 +741,7 @@ function StepAnalysis({
         </div>
         <Badge
           variant="secondary"
-          className="gap-1 bg-blue-500/15 text-blue-400"
+          className="gap-1 bg-primary/15 text-primary"
         >
           <FileText className="h-3 w-3" />
           {template.name}
@@ -783,7 +783,7 @@ function StepAnalysis({
         ))}
       </div>
 
-      <Card className="bg-card">
+      <Card>
         <CardHeader>
           <CardTitle className="text-sm">Key Insights</CardTitle>
         </CardHeader>
@@ -821,7 +821,7 @@ function StepAnalysis({
 
           {analysis.rankings.length > 0 && analysis.rankings[0].topN[0] && (
             <div className="flex items-start gap-3 text-sm">
-              <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-blue-500" />
+              <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
               <span className="text-muted-foreground">
                 Top{" "}
                 <span className="font-medium text-foreground">
@@ -835,7 +835,7 @@ function StepAnalysis({
 
           {analysis.chartConfigs.length > 0 && (
             <div className="flex items-start gap-3 text-sm">
-              <FileText className="mt-0.5 h-4 w-4 shrink-0 text-purple-500" />
+              <FileText className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
               <span className="text-muted-foreground">
                 {analysis.chartConfigs.length} chart
                 {analysis.chartConfigs.length !== 1 ? "s" : ""} recommended for
@@ -882,7 +882,7 @@ function StepCustomize({
         </p>
       </div>
 
-      <Card className="bg-card">
+      <Card>
         <CardHeader>
           <CardTitle className="text-sm">Report Settings</CardTitle>
         </CardHeader>
@@ -913,7 +913,7 @@ function StepCustomize({
                   className={cn(
                     "h-8 w-8 rounded-full border-2 transition-transform hover:scale-110",
                     brandColor === preset.value
-                      ? "border-white scale-110"
+                      ? "border-foreground scale-110"
                       : "border-transparent"
                   )}
                   style={{ backgroundColor: preset.value }}
@@ -926,7 +926,7 @@ function StepCustomize({
         </CardContent>
       </Card>
 
-      <Card className="bg-card">
+      <Card>
         <CardHeader>
           <CardTitle className="text-sm">Report Template</CardTitle>
         </CardHeader>
@@ -945,7 +945,7 @@ function StepCustomize({
         </CardContent>
       </Card>
 
-      <Card className="bg-card">
+      <Card>
         <CardHeader>
           <CardTitle className="text-sm">Sections</CardTitle>
         </CardHeader>
@@ -978,7 +978,7 @@ function StepCustomize({
       </Card>
 
       {chartConfigs.length > 0 && (
-        <Card className="bg-card">
+        <Card>
           <CardHeader>
             <CardTitle className="text-sm">Chart Types</CardTitle>
           </CardHeader>
@@ -1063,10 +1063,10 @@ function StepPreviewGenerate({
           />
 
           {generation.isGenerating && (
-            <Card className="bg-card">
+            <Card>
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
-                  <Loader2 className="h-5 w-5 animate-spin text-blue-500" />
+                  <Loader2 className="h-5 w-5 animate-spin text-primary" />
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-medium text-foreground">
                       {generation.message}
@@ -1087,7 +1087,7 @@ function StepPreviewGenerate({
                     Report generated successfully!
                   </p>
                   <Button
-                    className="w-full gap-2 bg-emerald-600 text-white font-medium hover:bg-emerald-500"
+                    className="w-full gap-2 bg-emerald-600 text-primary-foreground font-medium hover:bg-emerald-500"
                     onClick={onDownload}
                   >
                     <Download className="h-4 w-4" />
@@ -1098,7 +1098,7 @@ function StepPreviewGenerate({
                       href={`/report/${generation.reportId}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/20"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-border bg-secondary px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
                     >
                       <ExternalLink className="h-4 w-4" />
                       View Interactive Report
@@ -1121,7 +1121,7 @@ function StepPreviewGenerate({
                     {generation.error}
                   </p>
                   <Button
-                    className="w-full bg-white/10 border border-white/20 text-white hover:bg-white/20"
+                    className="w-full bg-secondary border border-border text-foreground hover:bg-accent"
                     onClick={onGenerate}
                   >
                     Retry
@@ -1146,7 +1146,7 @@ function StepPreviewGenerate({
                       </p>
                     </div>
                     <Button
-                      className="w-full gap-2 bg-blue-600 text-white font-medium hover:bg-blue-500"
+                      className="w-full gap-2 bg-primary text-primary-foreground font-medium hover:bg-primary/90"
                       onClick={onUpgrade}
                     >
                       <Sparkles className="h-4 w-4" />
@@ -1156,7 +1156,7 @@ function StepPreviewGenerate({
                 ) : (
                   <div className="space-y-3">
                     <Button
-                      className="w-full gap-2 bg-blue-600 text-white font-medium hover:bg-blue-500"
+                      className="w-full gap-2 bg-primary text-primary-foreground font-medium hover:bg-primary/90"
                       onClick={onGenerate}
                       disabled={!canGenerate}
                     >
@@ -1198,7 +1198,7 @@ function FormatSelector({
   const allowed = new Set(limits.formats.map((f) => f.toLowerCase()));
 
   return (
-    <Card className="bg-card">
+    <Card>
       <CardHeader>
         <CardTitle className="text-sm">Output Format</CardTitle>
       </CardHeader>
@@ -1218,7 +1218,7 @@ function FormatSelector({
               <span className="flex items-center gap-2">
                 DOCX (Word)
                 {!allowed.has("docx") && (
-                  <span className="inline-flex items-center gap-1 rounded bg-zinc-700 px-1.5 py-0.5 text-[10px] font-medium text-zinc-300">
+                  <span className="inline-flex items-center gap-1 rounded bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
                     <Lock className="h-2.5 w-2.5" /> Pro
                   </span>
                 )}
@@ -1228,7 +1228,7 @@ function FormatSelector({
               <span className="flex items-center gap-2">
                 Both PDF &amp; DOCX
                 {!allowed.has("both") && (
-                  <span className="inline-flex items-center gap-1 rounded bg-zinc-700 px-1.5 py-0.5 text-[10px] font-medium text-zinc-300">
+                  <span className="inline-flex items-center gap-1 rounded bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
                     <Lock className="h-2.5 w-2.5" /> Pro
                   </span>
                 )}

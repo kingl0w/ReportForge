@@ -12,7 +12,7 @@ export default function ReportsLoading() {
         <Skeleton className="h-9 w-32 rounded-md" />
       </div>
 
-      <Card className="bg-card">
+      <Card>
         <CardContent className="pt-6">
           <div className="flex gap-3">
             <Skeleton className="h-9 flex-1" />
@@ -21,7 +21,7 @@ export default function ReportsLoading() {
         </CardContent>
       </Card>
 
-      <Card className="bg-card">
+      <Card>
         <div className="p-4">
           <div className="flex items-center gap-4 border-b border-border pb-3">
             <Skeleton className="h-4 w-48" />

@@ -36,14 +36,14 @@ const steps: Step[] = [
 
 export default function HowItWorks() {
   return (
-    <section className="bg-slate-950 py-24 px-4 sm:px-6 lg:px-8">
+    <section className="bg-muted/50 py-24 sm:py-32 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <FadeIn>
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               How It Works
             </h2>
-            <p className="mt-4 text-lg text-slate-400">
+            <p className="mt-4 text-lg text-muted-foreground">
               Three steps to professional reports
             </p>
           </div>
@@ -55,24 +55,24 @@ export default function HowItWorks() {
               <div className="relative flex flex-col items-center text-center">
                 {index < steps.length - 1 && (
                   <div
-                    className="absolute top-16 left-[calc(50%+60px)] hidden h-0 w-[calc(100%-120px)] border-t-2 border-dashed border-slate-700/50 md:block"
+                    className="absolute top-16 left-[calc(50%+60px)] hidden h-0 w-[calc(100%-120px)] border-t-2 border-dashed border-border md:block"
                     aria-hidden="true"
                   />
                 )}
 
-                <div className="w-full rounded-xl border border-slate-700/50 bg-slate-800/50 p-8">
-                  <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-widest text-slate-500">
+                <div className="w-full rounded-xl border border-border bg-card p-8">
+                  <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                     Step {step.number}
                   </span>
 
-                  <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-blue-500/10">
-                    <step.icon className="h-6 w-6 text-blue-500" />
+                  <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+                    <step.icon className="h-6 w-6 text-primary" />
                   </div>
 
-                  <h3 className="mb-3 text-lg font-semibold text-white">
+                  <h3 className="mb-3 text-lg font-semibold text-foreground">
                     {step.title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-slate-400">
+                  <p className="text-sm leading-relaxed text-muted-foreground">
                     {step.description}
                   </p>
                 </div>

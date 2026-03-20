@@ -16,6 +16,7 @@ import {
   ExternalLink,
   ArrowUpCircle,
 } from "lucide-react";
+import Logo, { LogoIcon } from "@/components/shared/Logo";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -85,33 +86,26 @@ export default function Sidebar({ collapsed, onToggleCollapse }: SidebarProps) {
     <TooltipProvider delayDuration={0}>
       <aside
         className={cn(
-          "flex h-screen flex-col border-r border-border bg-card transition-all duration-300",
+          "flex h-screen flex-col border-r border-border bg-sidebar transition-all duration-300",
           collapsed ? "w-16" : "w-64"
         )}
       >
         <div className="flex h-16 items-center justify-between border-b border-border px-4">
           {!collapsed && (
-            <Link href="/dashboard" className="flex items-center gap-2">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-600">
-                <FileText className="h-4 w-4 text-white" />
-              </div>
-              <span className="text-lg font-bold text-foreground">
-                ReportForge
-              </span>
+            <Link href="/dashboard">
+              <Logo />
             </Link>
           )}
           {collapsed && (
             <Link href="/dashboard" className="mx-auto">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600">
-                <FileText className="h-4 w-4 text-white" />
-              </div>
+              <LogoIcon size={32} />
             </Link>
           )}
           <button
             onClick={onToggleCollapse}
             aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
             className={cn(
-              "hidden rounded-md p-1 text-white/40 transition-colors hover:bg-white/10 hover:text-white lg:block",
+              "hidden rounded-md p-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground lg:block",
               collapsed && "mx-auto mt-2"
             )}
           >
@@ -137,8 +131,8 @@ export default function Sidebar({ collapsed, onToggleCollapse }: SidebarProps) {
                 className={cn(
                   "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                   isActive
-                    ? "bg-blue-600/15 text-white"
-                    : "text-white/60 hover:bg-white/10 hover:text-white",
+                    ? "bg-primary/10 text-primary"
+                    : "text-muted-foreground hover:bg-accent hover:text-foreground",
                   collapsed && "justify-center px-2"
                 )}
               >
@@ -166,7 +160,7 @@ export default function Sidebar({ collapsed, onToggleCollapse }: SidebarProps) {
               <TooltipTrigger asChild>
                 <Link
                   href="/"
-                  className="flex items-center justify-center rounded-lg px-2 py-2 text-white/40 transition-colors hover:bg-white/10 hover:text-white"
+                  className="flex items-center justify-center rounded-lg px-2 py-2 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
                 >
                   <ExternalLink className="h-4 w-4" />
                 </Link>
@@ -176,7 +170,7 @@ export default function Sidebar({ collapsed, onToggleCollapse }: SidebarProps) {
           ) : (
             <Link
               href="/"
-              className="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs text-white/40 transition-colors hover:text-white/70"
+              className="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
             >
               <ExternalLink className="h-3.5 w-3.5" />
               Back to site
@@ -196,7 +190,7 @@ export default function Sidebar({ collapsed, onToggleCollapse }: SidebarProps) {
             ) : (
               <Avatar className="h-8 w-8 shrink-0">
                 <AvatarImage src={avatarUrl} alt={displayName || "User"} />
-                <AvatarFallback className="bg-blue-600/20 text-sm text-blue-500">
+                <AvatarFallback className="bg-primary/10 text-sm text-primary">
                   {initials}
                 </AvatarFallback>
               </Avatar>
@@ -210,7 +204,7 @@ export default function Sidebar({ collapsed, onToggleCollapse }: SidebarProps) {
                   </>
                 ) : (
                   <>
-                    <p className="truncate text-sm font-medium text-white">
+                    <p className="truncate text-sm font-medium text-foreground">
                       {displayName}
                     </p>
                     {subLoading ? (
@@ -218,7 +212,7 @@ export default function Sidebar({ collapsed, onToggleCollapse }: SidebarProps) {
                     ) : (
                       <Badge
                         variant="secondary"
-                        className="mt-0.5 gap-1 border-white/10 bg-white/10 text-[10px] text-white/70"
+                        className="mt-0.5 gap-1 text-xs"
                       >
                         <Crown className="h-2.5 w-2.5" />
                         {getPlanLabel(plan)}
@@ -233,7 +227,7 @@ export default function Sidebar({ collapsed, onToggleCollapse }: SidebarProps) {
                 <TooltipTrigger asChild>
                   <button
                     onClick={signOut}
-                    className="rounded-md p-1 text-white/40 transition-colors hover:bg-white/10 hover:text-white"
+                    className="rounded-md p-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
                     aria-label="Sign out"
                   >
                     <LogOut className="h-4 w-4" />
@@ -244,7 +238,7 @@ export default function Sidebar({ collapsed, onToggleCollapse }: SidebarProps) {
             ) : (
               <button
                 onClick={signOut}
-                className="rounded-md p-1 text-white/40 transition-colors hover:bg-white/10 hover:text-white"
+                className="rounded-md p-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
                 aria-label="Sign out"
               >
                 <LogOut className="h-4 w-4" />
@@ -283,10 +277,7 @@ export function MobileSidebar({
           className="flex items-center gap-2"
           onClick={onNavigate}
         >
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600">
-            <FileText className="h-4 w-4 text-white" />
-          </div>
-          <span className="text-lg font-bold text-foreground">ReportForge</span>
+          <Logo />
         </Link>
       </div>
 
@@ -305,8 +296,8 @@ export function MobileSidebar({
               className={cn(
                 "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                 isActive
-                  ? "bg-blue-600/15 text-white"
-                  : "text-white/60 hover:bg-white/10 hover:text-white"
+                  ? "bg-primary/10 text-primary"
+                  : "text-muted-foreground hover:bg-accent hover:text-foreground"
               )}
             >
               <item.icon className="h-5 w-5 shrink-0" />
@@ -320,7 +311,7 @@ export function MobileSidebar({
         <Link
           href="/"
           onClick={onNavigate}
-          className="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs text-white/40 transition-colors hover:text-white/70"
+          className="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
         >
           <ExternalLink className="h-3.5 w-3.5" />
           Back to site
@@ -334,7 +325,7 @@ export function MobileSidebar({
           ) : (
             <Avatar className="h-8 w-8 shrink-0">
               <AvatarImage src={mobileAvatarUrl} alt={displayName || "User"} />
-              <AvatarFallback className="bg-blue-600/20 text-sm text-blue-500">
+              <AvatarFallback className="bg-primary/10 text-sm text-primary">
                 {mobileInitials}
               </AvatarFallback>
             </Avatar>
@@ -347,13 +338,13 @@ export function MobileSidebar({
               </>
             ) : (
               <>
-                <p className="truncate text-sm font-medium text-white">
+                <p className="truncate text-sm font-medium text-foreground">
                   {displayName}
                 </p>
                 {subLoading ? (
                   <Skeleton className="mt-0.5 h-4 w-12" />
                 ) : (
-                  <Badge variant="secondary" className="mt-0.5 gap-1 border-white/10 bg-white/10 text-[10px] text-white/70">
+                  <Badge variant="secondary" className="mt-0.5 gap-1 text-xs">
                     <Crown className="h-2.5 w-2.5" />
                     {getPlanLabel(plan)}
                   </Badge>
@@ -363,7 +354,7 @@ export function MobileSidebar({
           </div>
           <button
             onClick={() => { signOut(); onNavigate(); }}
-            className="rounded-md p-1 text-white/40 transition-colors hover:bg-white/10 hover:text-white"
+            className="rounded-md p-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
             aria-label="Sign out"
           >
             <LogOut className="h-4 w-4" />

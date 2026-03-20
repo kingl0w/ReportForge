@@ -236,7 +236,7 @@ export default function SettingsPage() {
         </p>
       </div>
 
-      <Card className="bg-card">
+      <Card>
         <CardHeader>
           <div className="flex items-center gap-2">
             <User className="h-5 w-5 text-muted-foreground" />
@@ -250,7 +250,7 @@ export default function SettingsPage() {
           <div className="flex items-center gap-4">
             <Avatar className="h-16 w-16">
               <AvatarImage src={user?.user_metadata?.avatar_url ?? ""} alt={name} />
-              <AvatarFallback className="bg-blue-600/20 text-lg text-blue-500">
+              <AvatarFallback className="bg-primary/20 text-lg text-primary">
                 {name
                   .split(" ")
                   .map((n) => n[0])
@@ -259,7 +259,7 @@ export default function SettingsPage() {
               </AvatarFallback>
             </Avatar>
             <div>
-              <Button size="sm" className="bg-white/10 border border-white/20 text-white hover:bg-white/20">
+              <Button size="sm" className="bg-secondary border border-border text-foreground hover:bg-accent">
                 Change avatar
               </Button>
               <p className="mt-1 text-xs text-muted-foreground">
@@ -288,7 +288,7 @@ export default function SettingsPage() {
         </CardContent>
         <CardFooter className="border-t border-border pt-6">
           <Button
-            className="bg-blue-600 text-white font-medium hover:bg-blue-500"
+            className="bg-primary text-primary-foreground font-medium hover:bg-primary/90"
             onClick={saveProfile}
             disabled={savingProfile || userLoading}
           >
@@ -298,7 +298,7 @@ export default function SettingsPage() {
         </CardFooter>
       </Card>
 
-      <Card className="bg-card">
+      <Card>
         <CardHeader>
           <div className="flex items-center gap-2">
             <Mail className="h-5 w-5 text-muted-foreground" />
@@ -391,7 +391,7 @@ export default function SettingsPage() {
         </CardContent>
         <CardFooter className="border-t border-border pt-6">
           <Button
-            className="bg-blue-600 text-white font-medium hover:bg-blue-500"
+            className="bg-primary text-primary-foreground font-medium hover:bg-primary/90"
             onClick={saveEmailPreferences}
             disabled={savingEmail || loading}
           >
@@ -401,7 +401,7 @@ export default function SettingsPage() {
         </CardFooter>
       </Card>
 
-      <Card className="bg-card">
+      <Card>
         <CardHeader>
           <div className="flex items-center gap-2">
             <Palette className="h-5 w-5 text-muted-foreground" />
@@ -432,7 +432,7 @@ export default function SettingsPage() {
                 </p>
               </div>
               <Button
-                className="bg-blue-600 text-white font-medium hover:bg-blue-500"
+                className="bg-primary text-primary-foreground font-medium hover:bg-primary/90"
                 onClick={() => upgrade("PRO")}
               >
                 Upgrade to Pro — $10/month
@@ -459,14 +459,14 @@ export default function SettingsPage() {
                     <div className="flex gap-2">
                       <Button
                         size="sm"
-                        className="bg-white/10 border border-white/20 text-white hover:bg-white/20"
+                        className="bg-secondary border border-border text-foreground hover:bg-accent"
                         onClick={() => logoInputRef.current?.click()}
                       >
                         Replace
                       </Button>
                       <Button
                         size="sm"
-                        className="bg-white/10 border border-white/20 text-white hover:bg-white/20"
+                        className="bg-secondary border border-border text-foreground hover:bg-accent"
                         onClick={handleLogoRemove}
                       >
                         <X className="mr-1 h-3 w-3" />
@@ -478,7 +478,7 @@ export default function SettingsPage() {
                   <button
                     type="button"
                     onClick={() => logoInputRef.current?.click()}
-                    className="flex w-full cursor-pointer flex-col items-center gap-2 rounded-lg border-2 border-dashed border-border p-6 transition-colors hover:border-blue-500 hover:bg-blue-600/5"
+                    className="flex w-full cursor-pointer flex-col items-center gap-2 rounded-lg border-2 border-dashed border-border p-6 transition-colors hover:border-primary hover:bg-primary/5"
                     disabled={uploadingLogo}
                   >
                     {uploadingLogo ? (
@@ -623,7 +623,7 @@ export default function SettingsPage() {
         {isPro && !loading && (
           <CardFooter className="border-t border-border pt-6">
             <Button
-              className="bg-blue-600 text-white font-medium hover:bg-blue-500"
+              className="bg-primary text-primary-foreground font-medium hover:bg-primary/90"
               onClick={saveBrandingSettings}
               disabled={savingBranding}
             >
@@ -636,7 +636,7 @@ export default function SettingsPage() {
         )}
       </Card>
 
-      <Card className="bg-card">
+      <Card>
         <CardHeader>
           <div className="flex items-center gap-2">
             <CreditCard className="h-5 w-5 text-muted-foreground" />
@@ -670,7 +670,7 @@ export default function SettingsPage() {
             </div>
             {plan !== "PRO" && (
               <Button
-                className="bg-blue-600 text-white font-medium hover:bg-blue-500"
+                className="bg-primary text-primary-foreground font-medium hover:bg-primary/90"
                 onClick={() => upgrade("PRO")}
               >
                 Upgrade to Pro
@@ -689,7 +689,7 @@ export default function SettingsPage() {
               </p>
               <div className="mt-2 h-2 rounded-full bg-muted">
                 <div
-                  className="h-2 rounded-full bg-blue-600 transition-all"
+                  className="h-2 rounded-full bg-primary transition-all"
                   style={{ width: `${reportsLimit > 0 ? Math.min(100, (reportsUsed / reportsLimit) * 100) : 0}%` }}
                 />
               </div>
@@ -731,7 +731,7 @@ export default function SettingsPage() {
             </div>
             <Badge
               variant="outline"
-              className="border-blue-500 text-blue-500"
+              className="border-primary text-primary"
             >
               Recommended
             </Badge>
@@ -740,7 +740,7 @@ export default function SettingsPage() {
         <CardFooter className="border-t border-border pt-6">
           <Button
             size="sm"
-            className="bg-white/10 border border-white/20 text-white hover:bg-white/20"
+            className="bg-secondary border border-border text-foreground hover:bg-accent"
             onClick={openPortal}
           >
             <ExternalLink className="mr-2 h-4 w-4" />
@@ -770,7 +770,7 @@ export default function SettingsPage() {
                 undone.
               </p>
             </div>
-            <Button size="sm" className="bg-red-600/20 text-red-400 border border-red-500/30 hover:bg-red-600/30">
+            <Button size="sm" className="bg-destructive/20 text-destructive border border-destructive/30 hover:bg-destructive/30">
               Delete account
             </Button>
           </div>

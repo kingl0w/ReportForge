@@ -19,7 +19,7 @@ export default function NewReportLoading() {
         ))}
       </div>
 
-      <Card className="bg-card">
+      <Card>
         <CardContent className="pt-6">
           <div className="flex flex-col items-center justify-center py-12">
             <Skeleton className="h-16 w-16 rounded-2xl" />

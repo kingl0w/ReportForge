@@ -156,10 +156,10 @@ export default function ReportsList({ reports }: ReportsListProps) {
 
   if (reports.length === 0) {
     return (
-      <Card className="bg-card">
+      <Card>
         <CardContent className="flex flex-col items-center justify-center py-16">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-600/10">
-            <FileText className="h-8 w-8 text-blue-500" />
+          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
+            <FileText className="h-8 w-8 text-primary" />
           </div>
           <h3 className="mt-4 text-lg font-semibold text-foreground">
             No reports yet
@@ -169,7 +169,7 @@ export default function ReportsList({ reports }: ReportsListProps) {
           </p>
           <Button
             asChild
-            className="mt-6 bg-blue-600 text-white font-medium hover:bg-blue-500"
+            className="mt-6 bg-primary text-foreground font-medium hover:bg-primary/90"
           >
             <Link href="/dashboard/reports/new">
               <FilePlus className="mr-2 h-4 w-4" />
@@ -192,7 +192,7 @@ export default function ReportsList({ reports }: ReportsListProps) {
         </div>
         <Button
           asChild
-          className="bg-blue-600 text-white font-medium hover:bg-blue-500"
+          className="bg-primary text-foreground font-medium hover:bg-primary/90"
         >
           <Link href="/dashboard/reports/new">
             <FilePlus className="mr-2 h-4 w-4" />
@@ -201,7 +201,7 @@ export default function ReportsList({ reports }: ReportsListProps) {
         </Button>
       </div>
 
-      <Card className="bg-card">
+      <Card>
         <CardContent className="pt-6">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <div className="relative flex-1">
@@ -217,7 +217,7 @@ export default function ReportsList({ reports }: ReportsListProps) {
               <DropdownMenuTrigger asChild>
                 <Button
                   size="sm"
-                  className="bg-white/10 border border-white/20 text-white hover:bg-white/20"
+                  className="bg-secondary border border-border text-foreground hover:bg-accent"
                 >
                   <SlidersHorizontal className="mr-2 h-4 w-4" />
                   {statusFilter === "all"
@@ -225,7 +225,7 @@ export default function ReportsList({ reports }: ReportsListProps) {
                     : STATUS_LABEL[statusFilter] ?? statusFilter}
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="dark">
+              <DropdownMenuContent align="end">
                 <DropdownMenuItem onClick={() => setStatusFilter("all")}>
                   All Statuses
                 </DropdownMenuItem>
@@ -249,7 +249,7 @@ export default function ReportsList({ reports }: ReportsListProps) {
         </CardContent>
       </Card>
 
-      <Card className="bg-card">
+      <Card>
         {filtered.length === 0 ? (
           <CardContent className="py-12 text-center">
             <p className="text-muted-foreground">
@@ -289,7 +289,7 @@ export default function ReportsList({ reports }: ReportsListProps) {
                     {report.status === "COMPLETE" ? (
                       <Link
                         href={`/report/${report.id}`}
-                        className="font-medium text-foreground hover:text-blue-500"
+                        className="font-medium text-foreground hover:text-primary"
                       >
                         {report.title}
                       </Link>
@@ -326,13 +326,13 @@ export default function ReportsList({ reports }: ReportsListProps) {
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="h-8 w-8 text-white/70 hover:text-white hover:bg-white/10 dark:hover:bg-white/10"
+                          className="h-8 w-8 text-muted-foreground hover:text-foreground hover:bg-accent"
                         >
                           <MoreHorizontal className="h-4 w-4" />
                           <span className="sr-only">Actions</span>
                         </Button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end" className="dark">
+                      <DropdownMenuContent align="end">
                         {report.status === "COMPLETE" && (
                           <>
                             <DropdownMenuItem asChild>
@@ -392,16 +392,16 @@ export default function ReportsList({ reports }: ReportsListProps) {
         open={pendingDeleteId !== null}
         onOpenChange={handleAlertOpenChange}
       >
-        <AlertDialogContent className="border-zinc-700 bg-zinc-900 text-white">
+        <AlertDialogContent className="border-border bg-card text-foreground">
           <AlertDialogHeader>
-            <AlertDialogTitle className="text-white">Delete report?</AlertDialogTitle>
-            <AlertDialogDescription className="text-zinc-400">
+            <AlertDialogTitle className="text-foreground">Delete report?</AlertDialogTitle>
+            <AlertDialogDescription className="text-muted-foreground">
               This will permanently delete the report and its generated files.
               This action cannot be undone.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className="border-zinc-600 bg-white text-black hover:bg-zinc-200">
+            <AlertDialogCancel className="border-border bg-secondary text-foreground hover:bg-accent">
               Cancel
             </AlertDialogCancel>
             <AlertDialogAction

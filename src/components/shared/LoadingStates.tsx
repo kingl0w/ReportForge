@@ -12,7 +12,7 @@ export function PageSkeleton() {
 
 export function CardSkeleton() {
   return (
-    <Card className="bg-card">
+    <Card>
       <CardHeader>
         <Skeleton className="h-5 w-32" />
         <Skeleton className="h-4 w-48" />
@@ -34,7 +34,7 @@ export function TableSkeleton({
   columns?: number;
 }) {
   return (
-    <Card className="bg-card">
+    <Card>
       <CardContent className="pt-6">
         <div className="flex gap-4 border-b border-border pb-3">
           {Array.from({ length: columns }).map((_, i) => (
@@ -57,7 +57,7 @@ export function TableSkeleton({
 
 export function FormSkeleton() {
   return (
-    <Card className="bg-card">
+    <Card>
       <CardHeader>
         <Skeleton className="h-5 w-40" />
         <Skeleton className="h-4 w-56" />

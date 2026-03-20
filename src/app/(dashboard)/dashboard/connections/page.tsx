@@ -86,14 +86,14 @@ export default function ConnectionsPage() {
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button className="bg-blue-600 text-white font-medium hover:bg-blue-500">
+            <Button className="bg-primary text-primary-foreground font-medium hover:bg-primary/90">
               <Plus className="mr-2 h-4 w-4" />
               Connect
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem onClick={() => setShopifyDialogOpen(true)}>
-              <ShoppingBag className="mr-2 h-4 w-4 text-[#96bf48]" />
+              <ShoppingBag className="mr-2 h-4 w-4 text-emerald-600" />
               Shopify
             </DropdownMenuItem>
             <DropdownMenuItem disabled>
@@ -138,7 +138,7 @@ export default function ConnectionsPage() {
             Connect your first data source to start generating automated reports.
           </p>
           <Button
-            className="mt-6 bg-blue-600 text-white font-medium hover:bg-blue-500"
+            className="mt-6 bg-primary text-primary-foreground font-medium hover:bg-primary/90"
             onClick={() => setShopifyDialogOpen(true)}
           >
             <ShoppingBag className="mr-2 h-4 w-4" />

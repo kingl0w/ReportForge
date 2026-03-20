@@ -9,7 +9,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { FileText, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import Logo from "@/components/shared/Logo";
 
 function sanitizeRedirect(value: string | null): string {
   const fallback = "/dashboard";
@@ -67,21 +68,20 @@ export function LoginForm() {
 
   return (
     <div className="grid min-h-screen lg:grid-cols-2">
-      <div className="hidden lg:flex flex-col justify-between bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 p-12 text-white">
-        <Link href="/" className="flex items-center gap-2">
-          <FileText className="h-8 w-8" />
-          <span className="text-xl font-bold">ReportForge</span>
+      <div className="hidden lg:flex flex-col justify-between bg-muted p-12">
+        <Link href="/">
+          <Logo size="lg" />
         </Link>
         <div className="space-y-4">
-          <blockquote className="text-2xl font-medium leading-relaxed">
+          <blockquote className="text-2xl font-medium leading-relaxed text-foreground">
             &ldquo;ReportForge turned our weekly analytics grind into a
             one-click operation. We save hours every week.&rdquo;
           </blockquote>
-          <p className="text-zinc-400">
+          <p className="text-muted-foreground">
             Sarah Chen, Head of Analytics at Meridian
           </p>
         </div>
-        <p className="text-sm text-zinc-500">
+        <p className="text-sm text-muted-foreground">
           Transform raw data into polished reports in seconds.
         </p>
       </div>
@@ -89,9 +89,8 @@ export function LoginForm() {
       <div className="flex items-center justify-center p-8">
         <Card className="w-full max-w-md border-0 shadow-none">
           <CardHeader className="space-y-1 text-center">
-            <Link href="/" className="flex items-center justify-center gap-2 lg:hidden mb-4">
-              <FileText className="h-6 w-6" />
-              <span className="text-lg font-bold">ReportForge</span>
+            <Link href="/" className="flex justify-center lg:hidden mb-4">
+              <Logo size="sm" />
             </Link>
             <CardTitle className="text-2xl font-bold">Welcome back</CardTitle>
             <CardDescription>

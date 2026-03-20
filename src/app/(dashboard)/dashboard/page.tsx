@@ -202,7 +202,7 @@ function StatsCards({ data }: { data: DashboardData }) {
 
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <Card className="bg-card">
+      <Card>
         <CardHeader className="flex flex-row items-center justify-between pb-2">
           <CardTitle className="text-sm font-medium text-muted-foreground">
             Reports Used
@@ -218,7 +218,7 @@ function StatsCards({ data }: { data: DashboardData }) {
           </div>
           <div className="mt-2 h-2 rounded-full bg-muted">
             <div
-              className={`h-2 rounded-full ${usagePercent >= 90 ? "bg-red-500" : "bg-blue-600"}`}
+              className={`h-2 rounded-full ${usagePercent >= 90 ? "bg-destructive" : "bg-primary"}`}
               style={{ width: `${usagePercent}%` }}
             />
           </div>
@@ -227,7 +227,7 @@ function StatsCards({ data }: { data: DashboardData }) {
           </p>
         </CardContent>
       </Card>
-      <Card className="bg-card">
+      <Card>
         <CardHeader className="flex flex-row items-center justify-between pb-2">
           <CardTitle className="text-sm font-medium text-muted-foreground">
             Reports Remaining
@@ -246,7 +246,7 @@ function StatsCards({ data }: { data: DashboardData }) {
           {showUpgrade && (
             <Link
               href="/dashboard/upgrade"
-              className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-blue-500 hover:text-blue-400"
+              className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-primary hover:text-primary/80"
             >
               Upgrade to Pro for 100/month
               <ArrowRight className="h-3 w-3" />
@@ -254,7 +254,7 @@ function StatsCards({ data }: { data: DashboardData }) {
           )}
         </CardContent>
       </Card>
-      <Card className="bg-card">
+      <Card>
         <CardHeader className="flex flex-row items-center justify-between pb-2">
           <CardTitle className="text-sm font-medium text-muted-foreground">
             Avg Generation Time
@@ -294,7 +294,7 @@ function DashboardSkeleton() {
           </Card>
         ))}
       </div>
-      <Card className="bg-card">
+      <Card>
         <CardHeader className="flex flex-row items-center justify-between">
           <Skeleton className="h-6 w-32" />
           <Skeleton className="h-8 w-20" />
@@ -340,10 +340,10 @@ function formatRelativeTime(dateStr: string): string {
 
 function RecentReportsList({ reports }: { reports: DashboardData["recentReports"] }) {
   return (
-    <Card className="bg-card">
+    <Card>
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle className="text-foreground">Recent Reports</CardTitle>
-        <Button variant="ghost" size="sm" className="text-white/70 hover:text-white hover:bg-white/10 dark:hover:bg-white/10" asChild>
+        <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground hover:bg-accent" asChild>
           <Link href="/dashboard/reports">
             View all
             <ArrowRight className="ml-1 h-4 w-4" />
@@ -362,7 +362,7 @@ function RecentReportsList({ reports }: { reports: DashboardData["recentReports"
             <p className="mt-1 text-xs text-muted-foreground">
               Upload a CSV or connect a data source to generate your first report.
             </p>
-            <Button asChild size="sm" className="mt-4 bg-blue-600 text-white font-medium hover:bg-blue-500">
+            <Button asChild size="sm" className="mt-4 bg-primary text-primary-foreground font-medium hover:bg-primary/90">
               <Link href="/dashboard/reports/new">
                 <Plus className="mr-2 h-4 w-4" />
                 Create your first report
@@ -378,8 +378,8 @@ function RecentReportsList({ reports }: { reports: DashboardData["recentReports"
                 className="flex items-center justify-between rounded-lg border border-border p-3 transition-colors hover:bg-accent/50"
               >
                 <div className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600/10">
-                    <FileText className="h-4 w-4 text-blue-500" />
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
+                    <FileText className="h-4 w-4 text-primary" />
                   </div>
                   <div>
                     <p className="text-sm font-medium text-foreground">
@@ -395,14 +395,14 @@ function RecentReportsList({ reports }: { reports: DashboardData["recentReports"
                     {statusLabel[report.status]}
                   </Badge>
                   {report.status === "COMPLETE" && (
-                    <Button variant="ghost" size="icon" className="h-8 w-8 text-white/70 hover:text-white hover:bg-white/10 dark:hover:bg-white/10" asChild>
+                    <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground hover:bg-accent" asChild>
                       <span>
                         <Download className="h-4 w-4" />
                       </span>
                     </Button>
                   )}
                   {report.status === "FAILED" && (
-                    <Button variant="ghost" size="icon" className="h-8 w-8 text-white/70 hover:text-white hover:bg-white/10 dark:hover:bg-white/10" asChild>
+                    <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground hover:bg-accent" asChild>
                       <span>
                         <RotateCcw className="h-4 w-4" />
                       </span>
@@ -427,8 +427,8 @@ function QuickActions({ plan }: { plan: string }) {
         <Link key={action.label} href={action.href}>
           <Card className="h-full bg-card transition-colors hover:bg-accent/50">
             <CardContent className="flex items-start gap-3 pt-6">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-600/10">
-                <action.icon className="h-5 w-5 text-blue-500" />
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                <action.icon className="h-5 w-5 text-primary" />
               </div>
               <div>
                 <p className="text-sm font-medium text-foreground">

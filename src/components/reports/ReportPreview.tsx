@@ -135,7 +135,7 @@ export default function ReportPreview({
 
   return (
     <div className="space-y-3">
-      <div className="w-full overflow-hidden rounded-lg border border-zinc-700 bg-white shadow-xl h-[600px]">
+      <div className="w-full overflow-hidden rounded-lg border border-border bg-white shadow-xl h-[600px]">
         <iframe
           srcDoc={inlineHtml}
           title="Report preview"
@@ -145,15 +145,15 @@ export default function ReportPreview({
       </div>
 
       <Dialog>
-        <DialogTrigger className="w-full gap-2 inline-flex items-center justify-center rounded-md text-sm font-medium h-9 px-4 py-2 bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all">
+        <DialogTrigger className="w-full gap-2 inline-flex items-center justify-center rounded-md text-sm font-medium h-9 px-4 py-2 bg-secondary border border-border text-foreground hover:bg-accent transition-all">
           <Expand className="h-4 w-4" />
           Full Screen Preview
         </DialogTrigger>
-        <DialogContent className="flex flex-col w-[95vw] h-[95vh] max-w-none sm:max-w-none p-0 gap-0 border-zinc-700 bg-[#1a1a1e]">
-          <DialogHeader className="shrink-0 border-b border-zinc-700 bg-zinc-900 px-6 py-3">
-            <DialogTitle className="text-white">Report Preview</DialogTitle>
+        <DialogContent className="flex flex-col w-[95vw] h-[95vh] max-w-none sm:max-w-none p-0 gap-0 border-border bg-muted">
+          <DialogHeader className="shrink-0 border-b border-border bg-card px-6 py-3">
+            <DialogTitle className="text-foreground">Report Preview</DialogTitle>
           </DialogHeader>
-          <div className="flex-1 min-h-0 overflow-hidden bg-[#1a1a1e]">
+          <div className="flex-1 min-h-0 overflow-hidden bg-muted">
             <iframe
               srcDoc={fullscreenHtml}
               title="Report full preview"

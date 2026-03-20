@@ -154,8 +154,8 @@ function SortableItem({
       className={cn(
         "group flex items-center gap-1 rounded-md border px-1.5 py-1.5 text-sm transition-colors",
         isSelected
-          ? "border-blue-500/60 bg-blue-500/10"
-          : "border-transparent hover:border-border hover:bg-white/5",
+          ? "border-primary/60 bg-primary/10"
+          : "border-transparent hover:border-border hover:bg-accent",
         isDragging && "z-50 opacity-80 shadow-lg",
         hidden && "opacity-40"
       )}
@@ -180,7 +180,7 @@ function SortableItem({
       </button>
 
       <button
-        className="shrink-0 rounded p-0.5 text-muted-foreground transition-colors hover:text-foreground hover:bg-white/10"
+        className="shrink-0 rounded p-0.5 text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
         onClick={(e) => {
           e.stopPropagation();
           onToggleVisibility();
@@ -195,7 +195,7 @@ function SortableItem({
       </button>
 
       <button
-        className="shrink-0 rounded p-0.5 text-muted-foreground opacity-0 transition-all hover:text-red-400 hover:bg-white/10 group-hover:opacity-100"
+        className="shrink-0 rounded p-0.5 text-muted-foreground opacity-0 transition-all hover:text-red-400 hover:bg-accent group-hover:opacity-100"
         onClick={(e) => {
           e.stopPropagation();
           onRemove();

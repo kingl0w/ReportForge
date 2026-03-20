@@ -73,7 +73,7 @@ export default function DashboardLayout({
   );
 
   return (
-    <div className="dark flex min-h-screen bg-background text-foreground">
+    <div className="flex min-h-screen bg-background text-foreground">
       <div className="sticky top-0 hidden h-screen lg:block">
         <Sidebar
           collapsed={collapsed}
@@ -88,14 +88,14 @@ export default function DashboardLayout({
             {mounted && (
               <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
                 <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon" className="lg:hidden text-white/70 hover:text-white hover:bg-white/10 dark:hover:bg-white/10">
+                  <Button variant="ghost" size="icon" className="lg:hidden text-muted-foreground hover:text-foreground hover:bg-accent">
                     <Menu className="h-5 w-5" />
                     <span className="sr-only">Toggle sidebar</span>
                   </Button>
                 </SheetTrigger>
                 <SheetContent
                   side="left"
-                  className="w-64 p-0 dark"
+                  className="w-64 p-0"
                 >
                   <SheetTitle className="sr-only">Navigation</SheetTitle>
                   <MobileSidebar onNavigate={() => setMobileOpen(false)} />
